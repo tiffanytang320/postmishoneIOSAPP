@@ -1,0 +1,6 @@
+framework module Pods_PostMishone {
+  umbrella header "Pods-PostMishone-umbrella.h"
+
+  export *
+  module * { export * }
+}
