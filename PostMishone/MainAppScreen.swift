@@ -51,17 +51,22 @@ class MainAppScreen: UIViewController {
         dataBaseHandle = ref?.child("PostedMissions").observe(.childAdded , with: { (snapshot) in
             //Code to execute when a child is added under "PostedMissions
             
-            //take value from snapshot and add it to  missionPostsArray
+          
 //             let latitude = snapshot.value(forKeyLOpbLyo4UsDmtud1RI0: "Latitude")
 //            let latitude = snapshot.value(forKey: "Latitude")
 //            let longitude = snapshot.value(forKey: "Longitude")
 //            print(latitude)
             
             
+            /*Take value from snapshot and add it to  missionPostsArray */
             if let dic = snapshot.value as? [String:Any], let time = dic["timeStamp"] as? Int, let latitude = dic["Latitude"] as? Double, let longitude = dic["Longitude"] as? Double {
 
                 let annotation = MKPointAnnotation()
                 annotation.coordinate = CLLocationCoordinate2D(latitude: latitude as! CLLocationDegrees, longitude: longitude as! CLLocationDegrees)
+
+                annotation.title = "Test title"
+                annotation.subtitle = "test subtitle"
+                
                 
                 self.missionPostsArray.append(annotation)
     
