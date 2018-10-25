@@ -43,6 +43,7 @@ class MainAppScreen: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        mapView.delegate = self //For showing annotation when pin is tapped
         ref = Database.database().reference() //Firebase Reference
         checkLocationServices() //check user location settings -> initiate user map
 //        self.PopDescribeMissionView.layer.cornerRadius = 10
@@ -57,17 +58,18 @@ class MainAppScreen: UIViewController {
 //            let longitude = snapshot.value(forKey: "Longitude")
 //            print(latitude)
             
-            
+            // MARK: Point Annotation Creation
             /*Take value from snapshot and add it to  missionPostsArray */
-            if let dic = snapshot.value as? [String:Any], let time = dic["timeStamp"] as? Int, let latitude = dic["Latitude"] as? Double, let longitude = dic["Longitude"] as? Double {
+            if let dic = snapshot.value as? [String:Any], let time = dic["timeStamp"] as? Int, let latitude = dic["Latitude"] as? Double, let longitude = dic["Longitude"] as? Double, let missionName = dic["missionName"] as? String, let missionDescription = dic["missionDescription"] as? String {
 
                 let annotation = MKPointAnnotation()
                 annotation.coordinate = CLLocationCoordinate2D(latitude: latitude as! CLLocationDegrees, longitude: longitude as! CLLocationDegrees)
+                
+                
+                annotation.title = missionName
+                annotation.subtitle = missionDescription
+                self.mapView.addAnnotation(annotation)
 
-                annotation.title = "Test title"
-                annotation.subtitle = "test subtitle"
-                
-                
                 self.missionPostsArray.append(annotation)
     
                 self.addAllPostedMissionsAnnotations()
@@ -231,5 +233,29 @@ extension MainAppScreen: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
 //        check if authorization changes, if so, check again
         checkLocationAuthorization()
+    }
+}
+
+extension MainAppScreen: MKMapViewDelegate {
+    // 1
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        // 2
+//        guard let annotation = annotation as? Artwork else { return nil }
+        // 3
+        let identifier = "marker"
+        var view: MKMarkerAnnotationView
+        // 4
+        if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+            as? MKMarkerAnnotationView {
+            dequeuedView.annotation = annotation
+            view = dequeuedView
+        } else {
+            // 5
+            view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            view.canShowCallout = true
+            view.calloutOffset = CGPoint(x: -5, y: 5)
+            view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+        }
+        return view
     }
 }
