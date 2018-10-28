@@ -171,6 +171,7 @@ extension MainAppScreen: CLLocationManagerDelegate {
         guard locations.last != nil else {
             return
         }
+        
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {

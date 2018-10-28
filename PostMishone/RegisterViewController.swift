@@ -23,7 +23,7 @@ class RegisterViewController : UIViewController {
     
     
     @IBAction func registerTapped(_ sender: Any) {
-        //Set up a new user on our Firebase database
+        // Set up a new user on our Firebase database
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
         

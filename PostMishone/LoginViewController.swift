@@ -23,7 +23,7 @@ class LoginViewController : UIViewController {
     
     
     @IBAction func loginTapped(_ sender: Any) {
-        
+        // Check user authentication, bring to mainAppScreen when ready
         Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
             if user != nil && error == nil {
                 self.navigationController?.popViewController(animated: false)
