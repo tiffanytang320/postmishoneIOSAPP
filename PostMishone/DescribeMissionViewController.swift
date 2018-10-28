@@ -21,7 +21,7 @@ class DescribeMissionViewController: UIViewController {
     @IBOutlet weak var reward: UITextField!
 
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated);
+        super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
     }
     
@@ -56,17 +56,17 @@ class DescribeMissionViewController: UIViewController {
         print("Mission Posted!")
 
     self.navigationController?.popViewController(animated: true)
-    
-
-        
     }
+    
 }
 
 // Make keyboard close on return key
 extension DescribeMissionViewController : UITextFieldDelegate {
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         textField.resignFirstResponder()
         return true
     }
+    
 }
