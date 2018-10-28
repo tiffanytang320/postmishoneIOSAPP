@@ -36,8 +36,6 @@ class DescribeMissionViewController: UIViewController {
 
     }
     
-    
-    
     @IBAction func postMissionPressed(_ sender: Any) {
         let userID = Auth.auth().currentUser!.uid
         let timeStamp = Int(NSDate.timeIntervalSinceReferenceDate*1000)
