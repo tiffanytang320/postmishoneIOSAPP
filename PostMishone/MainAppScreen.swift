@@ -44,7 +44,6 @@ class MainAppScreen: UIViewController {
         self.navigationController?.isNavigationBarHidden = true
     }
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self // For showing annotation when pin is tapped
@@ -55,7 +54,6 @@ class MainAppScreen: UIViewController {
         dataBaseHandle = ref?.child("PostedMissions").observe(.childAdded , with: { (snapshot) in
             
             //Code to execute when a child is added under "PostedMissions"
-            
             // MARK: Point Annotation Creation
             // Take value from snapshot and add it to missionPostsArray
             if let dic = snapshot.value as? [String:Any], let _ = dic["timeStamp"] as? Int, let latitude = dic["Latitude"] as? Double, let longitude = dic["Longitude"] as? Double, let missionName = dic["missionName"] as? String, let missionDescription = dic["missionDescription"] as? String {
@@ -70,7 +68,6 @@ class MainAppScreen: UIViewController {
                 self.missionPostsArray.append(annotation)
     
                 self.addAllPostedMissionsAnnotations() // !!! might need to change this
-                
             }
         })
     }
@@ -94,7 +91,6 @@ class MainAppScreen: UIViewController {
             // Set up location manager
             setupLocationManager()
             checkLocationAuthorization()
-
         }
         else {
             // Alert user their location service is off
@@ -111,7 +107,6 @@ class MainAppScreen: UIViewController {
             mapView.showsUserLocation = true
             centerViewOnUserLocation()
             locationManager.startUpdatingLocation()
-
             break
         case .denied:
             // Show alert "how to turn on alert"
@@ -130,7 +125,6 @@ class MainAppScreen: UIViewController {
     }
     
     // MARK: LONG PRESS -> Pin Mission
-    
     @IBAction func pinMission(_ sender: UILongPressGestureRecognizer) {
         if sender.state == UIGestureRecognizer.State.ended {
             let touchLocation = sender.location(in: mapView)
@@ -187,6 +181,7 @@ extension MainAppScreen: CLLocationManagerDelegate {
 
 extension MainAppScreen: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
         let identifier = "marker"
         var view: MKMarkerAnnotationView
         
@@ -195,7 +190,6 @@ extension MainAppScreen: MKMapViewDelegate {
             dequeuedView.annotation = annotation
             view = dequeuedView
         } else {
-            
             view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
             view.canShowCallout = true
             view.calloutOffset = CGPoint(x: -5, y: 5)
