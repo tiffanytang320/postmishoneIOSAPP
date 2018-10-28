@@ -6,7 +6,6 @@
 //  Copyright © 2018 Victor Liang. All rights reserved.
 //
 
-//import Foundation
 import UIKit
 import Firebase
 import GoogleSignIn
@@ -14,7 +13,6 @@ import GoogleSignIn
 class LoginViewController : UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()

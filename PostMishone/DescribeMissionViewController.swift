@@ -24,7 +24,6 @@ class DescribeMissionViewController: UIViewController {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         missionName.delegate = self

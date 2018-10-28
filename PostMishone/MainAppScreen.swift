@@ -26,7 +26,6 @@ import CoreLocation
 // }
 
 class MainAppScreen: UIViewController {
-    
     var ref: DatabaseReference!
     var dataBaseHandle: DatabaseHandle!
     var missionPostsArray = [MKPointAnnotation]()
@@ -40,7 +39,7 @@ class MainAppScreen: UIViewController {
     let displayRegionInMeters : Double = 1600
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated);
+        super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
     }
 
@@ -168,6 +167,7 @@ class MainAppScreen: UIViewController {
 
 // MARK: Map extension
 extension MainAppScreen: CLLocationManagerDelegate {
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard locations.last != nil else {
             return
@@ -179,9 +179,11 @@ extension MainAppScreen: CLLocationManagerDelegate {
         // Check if authorization changes, if so, check again
         checkLocationAuthorization()
     }
+    
 }
 
 extension MainAppScreen: MKMapViewDelegate {
+    
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
         let identifier = "marker"

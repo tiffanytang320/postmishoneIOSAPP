@@ -11,7 +11,6 @@ import UIKit
 import Firebase
 
 class MainNavigationController: UINavigationController {
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
