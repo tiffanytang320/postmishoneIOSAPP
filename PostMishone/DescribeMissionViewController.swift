@@ -31,9 +31,8 @@ class DescribeMissionViewController: UIViewController {
         missionDescription.delegate = self
         reward.delegate = self
         
-
         // Do any additional setup after loading the view.
-        ref = Database.database().reference() //Firebase Reference
+        ref = Database.database().reference() // Firebase Reference
 
     }
     
@@ -63,9 +62,10 @@ class DescribeMissionViewController: UIViewController {
     }
 }
 
-/* Make keyboard close on return key */
+// Make keyboard close on return key
 extension DescribeMissionViewController : UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
         textField.resignFirstResponder()
         return true
     }

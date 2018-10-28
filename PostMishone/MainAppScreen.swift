@@ -39,7 +39,6 @@ class MainAppScreen: UIViewController {
     let locationManager = CLLocationManager()
     let displayRegionInMeters : Double = 1600
     
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
         self.navigationController?.isNavigationBarHidden = true
@@ -58,7 +57,7 @@ class MainAppScreen: UIViewController {
             //Code to execute when a child is added under "PostedMissions"
             
             // MARK: Point Annotation Creation
-            /* Take value from snapshot and add it to missionPostsArray */
+            // Take value from snapshot and add it to missionPostsArray
             if let dic = snapshot.value as? [String:Any], let _ = dic["timeStamp"] as? Int, let latitude = dic["Latitude"] as? Double, let longitude = dic["Longitude"] as? Double, let missionName = dic["missionName"] as? String, let missionDescription = dic["missionDescription"] as? String {
 
                 let annotation = MKPointAnnotation()
@@ -89,7 +88,7 @@ class MainAppScreen: UIViewController {
         }
     }
 
-    /*Make sure location services are enabled on device*/
+    // Make sure location services are enabled on device
     func checkLocationServices() {
         if CLLocationManager.locationServicesEnabled() {
             // Set up location manager
