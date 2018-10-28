@@ -12,8 +12,8 @@ import Firebase
 import MapKit
 import CoreLocation
 
-/*Custom class for missions*/
-//class customMissionPin: NSObject, MKAnnotation {
+// Custom class for missions
+// class customMissionPin: NSObject, MKAnnotation {
 //    var coordinate: CLLocationCoordinate2D
 //    var title: String?
 //    var subtitle: String?
@@ -23,7 +23,7 @@ import CoreLocation
 //        self.subtitle = pinSubTitle
 //        self.coordinate = location
 //    }
-//}
+// }
 
 class MainAppScreen: UIViewController {
     
@@ -53,7 +53,7 @@ class MainAppScreen: UIViewController {
         // Retreive Mission Posts and listen for changes
         dataBaseHandle = ref?.child("PostedMissions").observe(.childAdded , with: { (snapshot) in
             
-            //Code to execute when a child is added under "PostedMissions"
+            // Code to execute when a child is added under "PostedMissions"
             // MARK: Point Annotation Creation
             // Take value from snapshot and add it to missionPostsArray
             if let dic = snapshot.value as? [String:Any], let _ = dic["timeStamp"] as? Int, let latitude = dic["Latitude"] as? Double, let longitude = dic["Longitude"] as? Double, let missionName = dic["missionName"] as? String, let missionDescription = dic["missionDescription"] as? String {
