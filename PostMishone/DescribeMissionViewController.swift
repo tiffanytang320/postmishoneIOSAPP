@@ -58,7 +58,7 @@ class DescribeMissionViewController: UIViewController {
     
 }
 
-// Make keyboard close on return key
+// Make keyboard close on return key press
 extension DescribeMissionViewController : UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
