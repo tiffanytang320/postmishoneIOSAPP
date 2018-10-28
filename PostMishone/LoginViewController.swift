@@ -27,9 +27,7 @@ class LoginViewController : UIViewController {
         Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
             if user != nil && error == nil {
                 self.navigationController?.popViewController(animated: false)
-//                self.dismiss(animated: false, completion: nil)
                 print("Log in success")
-//                self.performSegue(withIdentifier: "toMainAppScreen", sender: self)
                 
             }
             else {

@@ -33,38 +33,36 @@ class MainAppScreen: UIViewController {
     
     var longitude : Double = 0.0
     var latitude : Double = 0.0
-//    var timeStamp : Int = 0
-//    var userID : String = ""
     
     @IBOutlet weak var mapView: MKMapView!
     
     let locationManager = CLLocationManager()
     let displayRegionInMeters : Double = 1600
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated);
+        self.navigationController?.isNavigationBarHidden = true
+    }
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        mapView.delegate = self //For showing annotation when pin is tapped
-        ref = Database.database().reference() //Firebase Reference
-        checkLocationServices() //check user location settings -> initiate user map
-//        self.PopDescribeMissionView.layer.cornerRadius = 10
+        mapView.delegate = self // For showing annotation when pin is tapped
+        ref = Database.database().reference() // Firebase Reference
+        checkLocationServices() // Check user location settings -> initiate user map
         
-        //Retreive Mission Posts and listen for changes
+        // Retreive Mission Posts and listen for changes
         dataBaseHandle = ref?.child("PostedMissions").observe(.childAdded , with: { (snapshot) in
-            //Code to execute when a child is added under "PostedMissions
             
-          
-//             let latitude = snapshot.value(forKeyLOpbLyo4UsDmtud1RI0: "Latitude")
-//            let latitude = snapshot.value(forKey: "Latitude")
-//            let longitude = snapshot.value(forKey: "Longitude")
-//            print(latitude)
+            //Code to execute when a child is added under "PostedMissions"
             
             // MARK: Point Annotation Creation
-            /*Take value from snapshot and add it to  missionPostsArray */
-            if let dic = snapshot.value as? [String:Any], let time = dic["timeStamp"] as? Int, let latitude = dic["Latitude"] as? Double, let longitude = dic["Longitude"] as? Double, let missionName = dic["missionName"] as? String, let missionDescription = dic["missionDescription"] as? String {
+            /* Take value from snapshot and add it to missionPostsArray */
+            if let dic = snapshot.value as? [String:Any], let _ = dic["timeStamp"] as? Int, let latitude = dic["Latitude"] as? Double, let longitude = dic["Longitude"] as? Double, let missionName = dic["missionName"] as? String, let missionDescription = dic["missionDescription"] as? String {
 
                 let annotation = MKPointAnnotation()
-                annotation.coordinate = CLLocationCoordinate2D(latitude: latitude as! CLLocationDegrees, longitude: longitude as! CLLocationDegrees)
-                
+                annotation.coordinate = CLLocationCoordinate2D(latitude: latitude , longitude: longitude )
                 
                 annotation.title = missionName
                 annotation.subtitle = missionDescription
@@ -72,18 +70,10 @@ class MainAppScreen: UIViewController {
 
                 self.missionPostsArray.append(annotation)
     
-                self.addAllPostedMissionsAnnotations()
+                self.addAllPostedMissionsAnnotations() // !!! might need to change this
                 
             }
-            
-//            let annotation = MKPointAnnotation()
-//            annotation.coordinate = CLLocationCoordinate2D(latitude: latitude as! CLLocationDegrees, longitude: longitude as! CLLocationDegrees)
-//
-//            self.missionPostsArray.append(annotation)
-//
-//            self.addAllPostedMissionsAnnotations()
         })
-        
     }
     
     // MARK: MAP FUNCTIONALITY
@@ -102,13 +92,13 @@ class MainAppScreen: UIViewController {
     /*Make sure location services are enabled on device*/
     func checkLocationServices() {
         if CLLocationManager.locationServicesEnabled() {
-            // set up location manager
+            // Set up location manager
             setupLocationManager()
             checkLocationAuthorization()
 
         }
         else {
-            //alert user their location service is off
+            // Alert user their location service is off
             print("location service disabled")
         }
     }
@@ -117,7 +107,7 @@ class MainAppScreen: UIViewController {
     func checkLocationAuthorization() {
         switch CLLocationManager.authorizationStatus() {
         case .authorizedWhenInUse:
-            //Do map stuff
+            // Do map stuff
             print("doing map stuff")
             mapView.showsUserLocation = true
             centerViewOnUserLocation()
@@ -125,7 +115,7 @@ class MainAppScreen: UIViewController {
 
             break
         case .denied:
-            //Show alert how to turn on alert
+            // Show alert "how to turn on alert"
             print("Denied")
             break
         case .notDetermined:
@@ -133,7 +123,7 @@ class MainAppScreen: UIViewController {
             break
         case .restricted:
             print("Denied")
-            //Show alert about whats up
+            // Show alert about whats up
             break
         case .authorizedAlways:
             break
@@ -146,50 +136,27 @@ class MainAppScreen: UIViewController {
         if sender.state == UIGestureRecognizer.State.ended {
             let touchLocation = sender.location(in: mapView)
             let locationCoordinate = mapView.convert(touchLocation,toCoordinateFrom: mapView)
-            
-//            let missionpin = customMissionPin(PinTitle: <#T##String#>, pinSubTitle: <#T##String#>, location: <#T##CLLocationCoordinate2D#>)
 
-            
-//            let annotation = MKPointAnnotation()
-//            annotation.coordinate = CLLocationCoordinate2D(latitude: locationCoordinate.latitude, longitude: locationCoordinate.longitude)
-//            mapView.addAnnotation(annotation)
-            
-
-            
-//            let userID = Auth.auth().currentUser!.uid
-//            let timeStamp = Int(NSDate.timeIntervalSinceReferenceDate*1000)
-
-            
             longitude = locationCoordinate.longitude
             latitude = locationCoordinate.latitude
-//            userID = Auth.auth().currentUser!.uid
-//            timeStamp = Int(NSDate.timeIntervalSinceReferenceDate*1000)
-
-//            ref?.child("PostedMissions").childByAutoId().setValue(["Latitude": locationCoordinate.latitude, "Longitude": locationCoordinate.longitude, "UserID": userID, "timeStamp": timeStamp])
             
             self.performSegue(withIdentifier: "toDescribeMission", sender: self)
 
             print("Long pressed mission at lat: \(locationCoordinate.latitude) long: \(locationCoordinate.longitude)")
         }
-//        if sender.state == UIGestureRecognizer.State.began {
-//            return
-//        }
-
-    
     }
     
     
+    // Prepares pin coordinate information to send to describeMissionViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let describeMissionVC = segue.destination as? DescribeMissionViewController else { return }
         describeMissionVC.latitude = latitude
         describeMissionVC.longitude = longitude
-//        describeMissionVC.userID = userID
-//        describeMissionVC.timeStamp = timeStamp
     }
 
     
-    
-    func addAllPostedMissionsAnnotations() { //reload map with all missions in array
+    // Upadates map with all annotations in missionPostsArray
+    func addAllPostedMissionsAnnotations() {
         for annotation in missionPostsArray {
         mapView.addAnnotation(annotation)
         }
@@ -202,55 +169,34 @@ class MainAppScreen: UIViewController {
         print("logout")
         self.dismiss(animated: true, completion: nil)
     }
-    
-
-    //
-//    @IBOutlet var PopDescribeMissionView: UIView!
-//
-//    @IBAction func popbutt(_ sender: Any) {
-//        self.view.addSubview(PopDescribeMissionView)
-//        PopDescribeMissionView.center = self.view.center
-//    }
-//
-//    @IBAction func exitDescribMission(_ sender: Any) {
-//        self.PopDescribeMissionView.removeFromSuperview()
-//    }
 }
 
 
 // MARK: Map extension
 extension MainAppScreen: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = locations.last else {
+        guard locations.last != nil else {
             return
         }
-        //update location if location has changed
-//        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-//        let region = MKCoordinateRegion.init(center: center, latitudinalMeters: displayRegionInMeters, longitudinalMeters: displayRegionInMeters)
-//        mapView.setRegion(region, animated: true)
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-//        check if authorization changes, if so, check again
+        // Check if authorization changes, if so, check again
         checkLocationAuthorization()
     }
 }
 
 extension MainAppScreen: MKMapViewDelegate {
-    // 1
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        // 2
-//        guard let annotation = annotation as? Artwork else { return nil }
-        // 3
         let identifier = "marker"
         var view: MKMarkerAnnotationView
-        // 4
+        
         if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
             as? MKMarkerAnnotationView {
             dequeuedView.annotation = annotation
             view = dequeuedView
         } else {
-            // 5
+            
             view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
             view.canShowCallout = true
             view.calloutOffset = CGPoint(x: -5, y: 5)

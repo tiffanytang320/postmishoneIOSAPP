@@ -19,7 +19,11 @@ class DescribeMissionViewController: UIViewController {
     @IBOutlet weak var missionName: UITextField!
     @IBOutlet weak var missionDescription: UITextField!
     @IBOutlet weak var reward: UITextField!
-    
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated);
+        self.navigationController?.isNavigationBarHidden = false
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,22 +61,9 @@ class DescribeMissionViewController: UIViewController {
 
         
     }
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
-/*make keyboard close on return*/
+/* Make keyboard close on return key */
 extension DescribeMissionViewController : UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
