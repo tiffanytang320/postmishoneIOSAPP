@@ -28,22 +28,16 @@ class RegisterViewController : UIViewController {
         
         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
             if error == nil && user != nil {
+                let userID = Auth.auth().currentUser!.uid
+                let values = ["email": email, "password": password] as [String : Any] // TODO: add username (change password)
+                self.registerUserIntoDatabase(userID, values: values as [String : AnyObject])
+
                 self.navigationController?.popViewController(animated: false)
+                
 
 
                 print("Registration Successful")
-                
-                // MARK: User Profile Creation !!!
-                // Username database entry
-//                let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
-//                changeRequest?.displayName = username
-//                changeRequest?.commitChanges { error in
-//                    if error == nil {
-//                        print("User name changed")
-//                    }
-//                }
-//
-                
+
             } else {
                 print("Error registering")
                 print(error!)
@@ -52,5 +46,20 @@ class RegisterViewController : UIViewController {
         }
     }
     
-
+    private func registerUserIntoDatabase(_ userID: String, values: [String: AnyObject]) {
+        // Adding User Info
+        let ref = Database.database().reference()
+        let usersReference = ref.child("users").child(userID)
+        
+        usersReference.updateChildValues(values, withCompletionBlock: { (err, ref) in
+            if err != nil {
+                print(err!)
+                return
+            }
+            print("Successfully Added a New User to the Database")
+        })
+    }
+    
 }
+
+

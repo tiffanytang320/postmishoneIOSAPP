@@ -32,7 +32,6 @@ class LoginViewController : UIViewController {
                 print(error!)
                 print(self.emailTextField.text!)
                 print(self.passwordTextField.text!)
-
             }
         }
 
