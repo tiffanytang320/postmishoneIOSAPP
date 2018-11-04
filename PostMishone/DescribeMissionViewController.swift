@@ -5,7 +5,6 @@
 //  Created by Victor Liang on 2018-10-14.
 //  Copyright © 2018 Victor Liang. All rights reserved.
 //
-
 import UIKit
 import Firebase
 import MapKit
@@ -15,11 +14,11 @@ class DescribeMissionViewController: UIViewController {
     var ref: DatabaseReference!
     var latitude = 0.0
     var longitude = 0.0
-
+    
     @IBOutlet weak var missionName: UITextField!
     @IBOutlet weak var missionDescription: UITextField!
     @IBOutlet weak var reward: UITextField!
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
@@ -32,10 +31,9 @@ class DescribeMissionViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         ref = Database.database().reference() // Firebase Reference
-
     }
     
-    @IBAction func e(_ sender: Any) {
+    @IBAction func postMissionPressed(_ sender: Any) {
         let userID = Auth.auth().currentUser!.uid
         let timeStamp = Int(NSDate.timeIntervalSinceReferenceDate*1000)
         
@@ -49,10 +47,10 @@ class DescribeMissionViewController: UIViewController {
         print("reward: ", reward.text!)
         
         ref?.child("PostedMissions").childByAutoId().setValue(["Latitude": latitude, "Longitude": longitude, "UserID": userID, "timeStamp": timeStamp, "missionName": missionName.text!, "missionDescription": missionDescription.text!, "reward": reward.text!])
-
+        
         print("Mission Posted!")
-
-    self.navigationController?.popViewController(animated: true)
+        
+        self.navigationController?.popViewController(animated: true)
     }
     
 }

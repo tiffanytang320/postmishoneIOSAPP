@@ -5,7 +5,6 @@
 //  Created by Victor Liang on 2018-10-14.
 //  Copyright © 2018 Victor Liang. All rights reserved.
 //
-
 import Foundation
 import UIKit
 import Firebase
@@ -24,7 +23,6 @@ import CoreLocation
 //        self.coordinate = location
 //    }
 // }
-
 class MainAppScreen: UIViewController {
     var ref: DatabaseReference!
     var dataBaseHandle: DatabaseHandle!
@@ -42,7 +40,7 @@ class MainAppScreen: UIViewController {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self // For showing annotation when pin is tapped
@@ -56,16 +54,16 @@ class MainAppScreen: UIViewController {
             // MARK: Point Annotation Creation
             // Take value from snapshot and add it to missionPostsArray
             if let dic = snapshot.value as? [String:Any], let _ = dic["timeStamp"] as? Int, let latitude = dic["Latitude"] as? Double, let longitude = dic["Longitude"] as? Double, let missionName = dic["missionName"] as? String, let missionDescription = dic["missionDescription"] as? String {
-
+                
                 let annotation = MKPointAnnotation()
                 annotation.coordinate = CLLocationCoordinate2D(latitude: latitude , longitude: longitude )
                 
                 annotation.title = missionName
                 annotation.subtitle = missionDescription
                 self.mapView.addAnnotation(annotation)
-
+                
                 self.missionPostsArray.append(annotation)
-    
+                
                 self.addAllPostedMissionsAnnotations() // !!! might need to change this
             }
         })
@@ -76,14 +74,14 @@ class MainAppScreen: UIViewController {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
-
+    
     func centerViewOnUserLocation() {
         if let location = locationManager.location?.coordinate {
             let region = MKCoordinateRegion.init(center : location, latitudinalMeters : displayRegionInMeters, longitudinalMeters :  displayRegionInMeters)
             mapView.setRegion(region, animated: true)
         }
     }
-
+    
     // Make sure location services are enabled on device
     func checkLocationServices() {
         if CLLocationManager.locationServicesEnabled() {
@@ -96,8 +94,8 @@ class MainAppScreen: UIViewController {
             print("location service disabled")
         }
     }
-
-
+    
+    
     func checkLocationAuthorization() {
         switch CLLocationManager.authorizationStatus() {
         case .authorizedWhenInUse:
@@ -128,12 +126,12 @@ class MainAppScreen: UIViewController {
         if sender.state == UIGestureRecognizer.State.ended {
             let touchLocation = sender.location(in: mapView)
             let locationCoordinate = mapView.convert(touchLocation,toCoordinateFrom: mapView)
-
+            
             longitude = locationCoordinate.longitude
             latitude = locationCoordinate.latitude
             
             self.performSegue(withIdentifier: "toDescribeMission", sender: self)
-
+            
             print("Long pressed mission at lat: \(locationCoordinate.latitude) long: \(locationCoordinate.longitude)")
         }
     }
@@ -145,12 +143,12 @@ class MainAppScreen: UIViewController {
         describeMissionVC.latitude = latitude
         describeMissionVC.longitude = longitude
     }
-
+    
     
     // Upadates map with all annotations in missionPostsArray
     func addAllPostedMissionsAnnotations() {
         for annotation in missionPostsArray {
-        mapView.addAnnotation(annotation)
+            mapView.addAnnotation(annotation)
         }
     }
     
@@ -183,12 +181,13 @@ extension MainAppScreen: CLLocationManagerDelegate {
 }
 
 extension MainAppScreen: MKMapViewDelegate {
-    
+
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        
+        if annotation is MKUserLocation { return nil }
+
         let identifier = "marker"
         var view: MKMarkerAnnotationView
-        
+
         if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
             as? MKMarkerAnnotationView {
             dequeuedView.annotation = annotation
@@ -201,4 +200,10 @@ extension MainAppScreen: MKMapViewDelegate {
         }
         return view
     }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        print("info")
+        self.performSegue(withIdentifier: "toMissionDescription", sender: self)
+    }
+    
 }
