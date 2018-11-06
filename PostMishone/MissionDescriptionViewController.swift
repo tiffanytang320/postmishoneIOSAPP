@@ -11,9 +11,15 @@ import Firebase
 
 class MissionDescriptionViewController: UIViewController {
     var ref: DatabaseReference!
+    var missionTitle = ""
+    var subtitle = ""
+    var reward = ""
+    var posterID = ""
+    
     
     @IBOutlet weak var missionTitleLabel: UILabel!
     @IBOutlet weak var missionSubtitleLabel: UILabel!
+    @IBOutlet weak var missionSubtitleTextView: UITextView!
     @IBOutlet weak var missionRewardLabel: UILabel!
     @IBOutlet weak var missionPosterLabel: UILabel!
     
@@ -26,6 +32,11 @@ class MissionDescriptionViewController: UIViewController {
         super.viewDidLoad()
         ref = Database.database().reference() // Firebase Reference
 //        ref.child("users").child ///TODO
+        missionTitleLabel.text = missionTitle
+        missionSubtitleLabel.text = subtitle
+        missionSubtitleTextView.text = subtitle
+        missionRewardLabel.text = reward
+        missionPosterLabel.text = posterID
         
     }
     

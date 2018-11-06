@@ -30,12 +30,11 @@ import CoreLocation
     }
  }
 
-
 class MainAppScreen: UIViewController {
     var ref: DatabaseReference!
     var dataBaseHandle: DatabaseHandle!
     var missionPostsArray = [missionAnnotation]()
-    var selectedAnnotation: MKPointAnnotation?
+    var selectedAnnotation: missionAnnotation?
     var longitude : Double = 0.0
     var latitude : Double = 0.0
     let userID = Auth.auth().currentUser!.uid
@@ -147,10 +146,21 @@ class MainAppScreen: UIViewController {
     
     // Prepares pin coordinate information to send to describeMissionViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let describeMissionVC = segue.destination as? DescribeMissionViewController else { return }
-        describeMissionVC.latitude = latitude
-        describeMissionVC.longitude = longitude
+        if segue.identifier == "toDescribeMission" {
+            let destination = segue.destination as? DescribeMissionViewController
+            destination?.latitude = latitude
+            destination?.longitude = longitude
+        }
+        if segue.identifier == "toMissionDescription" {
+            let destination = segue.destination as? MissionDescriptionViewController
+            destination?.missionTitle = selectedAnnotation?.title ?? ""
+            destination?.subtitle = selectedAnnotation?.subtitle ?? ""
+            destination?.posterID = selectedAnnotation?.missionPosterID ?? ""
+            destination?.reward = selectedAnnotation?.reward ?? ""
+            
+        }
     }
+    
     
 
     
@@ -207,7 +217,7 @@ extension MainAppScreen: MKMapViewDelegate {
             view.calloutOffset = CGPoint(x: -5, y: 5)
             view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
             if let annotation = view.annotation as? missionAnnotation {
-                if(annotation.missionPosterID == userID) {
+                if(annotation.missionPosterID == userID) { // Render marker color, differentiate own missions from others // TODO: helper function to classify missions
                     view.markerTintColor = UIColor.blue;
                 }
             }
@@ -224,6 +234,7 @@ extension MainAppScreen: MKMapViewDelegate {
     // MARK: SELECT ANNOTATION -> Identify selected annotation
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         if let annotation = view.annotation as? missionAnnotation {
+            selectedAnnotation = annotation;
             print("selected posterID: \(String(describing: annotation.missionPosterID))")
             print("selected reward: \(String(describing: annotation.reward))")
             print("selected timeStamp: \(String(describing: annotation.timeStamp))")
