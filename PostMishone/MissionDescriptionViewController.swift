@@ -11,7 +11,12 @@ import Firebase
 
 class MissionDescriptionViewController: UIViewController {
     var ref: DatabaseReference!
-
+    
+    @IBOutlet weak var missionTitleLabel: UILabel!
+    @IBOutlet weak var missionSubtitleLabel: UILabel!
+    @IBOutlet weak var missionRewardLabel: UILabel!
+    @IBOutlet weak var missionPosterLabel: UILabel!
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false

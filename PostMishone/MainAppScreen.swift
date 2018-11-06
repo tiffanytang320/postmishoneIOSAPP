@@ -11,25 +11,34 @@ import Firebase
 import MapKit
 import CoreLocation
 
-// Custom class for missions
-// class customMissionPin: NSObject, MKAnnotation {
-//    var coordinate: CLLocationCoordinate2D
-//    var title: String?
-//    var subtitle: String?
-//
-//    init(PinTitle:String, pinSubTitle:String, location:CLLocationCoordinate2D) {
-//        self.title = PinTitle
-//        self.subtitle = pinSubTitle
-//        self.coordinate = location
-//    }
-// }
+// Custom class for missions: (replacing MKAnnotation)
+ class missionAnnotation: NSObject, MKAnnotation {
+    var coordinate: CLLocationCoordinate2D
+    var title: String?
+    var subtitle: String?
+    var missionPosterID: String?
+    var timeStamp: Int?
+    var reward: String?
+    
+    init(title:String, subtitle:String, location:CLLocationCoordinate2D, posterID:String, timeStamp:Int, reward:String) {
+        self.title = title
+        self.subtitle = subtitle
+        self.coordinate = location
+        self.missionPosterID = posterID
+        self.timeStamp = timeStamp
+        self.reward = reward
+    }
+ }
+
+
 class MainAppScreen: UIViewController {
     var ref: DatabaseReference!
     var dataBaseHandle: DatabaseHandle!
-    var missionPostsArray = [MKPointAnnotation]()
-    
+    var missionPostsArray = [missionAnnotation]()
+    var selectedAnnotation: MKPointAnnotation?
     var longitude : Double = 0.0
     var latitude : Double = 0.0
+    let userID = Auth.auth().currentUser!.uid
     
     @IBOutlet weak var mapView: MKMapView!
     
@@ -47,19 +56,19 @@ class MainAppScreen: UIViewController {
         ref = Database.database().reference() // Firebase Reference
         checkLocationServices() // Check user location settings -> initiate user map
         
+//        let mission = missionAnnotation(title: "custom annotation", subtitle: "custom sub", location: CLLocationCoordinate2D(latitude: 49.26044, longitude: -123.24), posterID: "customposterID")
+//        self.mapView.addAnnotation(mission)
+        
         // Retreive Mission Posts and listen for changes
         dataBaseHandle = ref?.child("PostedMissions").observe(.childAdded , with: { (snapshot) in
             
             // Code to execute when a child is added under "PostedMissions"
-            // MARK: Point Annotation Creation
+            // MARK: missionAnnotation Creation
             // Take value from snapshot and add it to missionPostsArray
-            if let dic = snapshot.value as? [String:Any], let _ = dic["timeStamp"] as? Int, let latitude = dic["Latitude"] as? Double, let longitude = dic["Longitude"] as? Double, let missionName = dic["missionName"] as? String, let missionDescription = dic["missionDescription"] as? String {
-                
-                let annotation = MKPointAnnotation()
-                annotation.coordinate = CLLocationCoordinate2D(latitude: latitude , longitude: longitude )
-                
-                annotation.title = missionName
-                annotation.subtitle = missionDescription
+            if let dic = snapshot.value as? [String:Any], let timeStamp = dic["timeStamp"] as? Int, let latitude = dic["Latitude"] as? Double, let longitude = dic["Longitude"] as? Double, let missionName = dic["missionName"] as? String, let missionDescription = dic["missionDescription"] as? String, let posterID = dic["UserID"] as? String, let reward = dic["reward"] as? String {
+
+                let annotation = missionAnnotation(title: missionName, subtitle: missionDescription, location: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), posterID: posterID, timeStamp: timeStamp, reward: reward)
+
                 self.mapView.addAnnotation(annotation)
                 
                 self.missionPostsArray.append(annotation)
@@ -136,7 +145,6 @@ class MainAppScreen: UIViewController {
         }
     }
     
-    
     // Prepares pin coordinate information to send to describeMissionViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let describeMissionVC = segue.destination as? DescribeMissionViewController else { return }
@@ -144,6 +152,7 @@ class MainAppScreen: UIViewController {
         describeMissionVC.longitude = longitude
     }
     
+
     
     // Upadates map with all annotations in missionPostsArray
     func addAllPostedMissionsAnnotations() {
@@ -183,7 +192,7 @@ extension MainAppScreen: CLLocationManagerDelegate {
 extension MainAppScreen: MKMapViewDelegate {
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        if annotation is MKUserLocation { return nil }
+        if annotation is MKUserLocation { return nil } // Do not touch UserLocation
 
         let identifier = "marker"
         var view: MKMarkerAnnotationView
@@ -197,6 +206,11 @@ extension MainAppScreen: MKMapViewDelegate {
             view.canShowCallout = true
             view.calloutOffset = CGPoint(x: -5, y: 5)
             view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+            if let annotation = view.annotation as? missionAnnotation {
+                if(annotation.missionPosterID == userID) {
+                    view.markerTintColor = UIColor.blue;
+                }
+            }
         }
         return view
     }
@@ -205,5 +219,16 @@ extension MainAppScreen: MKMapViewDelegate {
         print("info")
         self.performSegue(withIdentifier: "toMissionDescription", sender: self)
     }
+    
+    
+    // MARK: SELECT ANNOTATION -> Identify selected annotation
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        if let annotation = view.annotation as? missionAnnotation {
+            print("selected posterID: \(String(describing: annotation.missionPosterID))")
+            print("selected reward: \(String(describing: annotation.reward))")
+            print("selected timeStamp: \(String(describing: annotation.timeStamp))")
+        }
+    }
+    
     
 }

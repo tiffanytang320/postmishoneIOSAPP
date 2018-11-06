@@ -407,7 +407,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vmD-GA-8Ob">
-                                <rect key="frame" x="166" y="153" width="42" height="21"/>
+                                <rect key="frame" x="166" y="154" width="42" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -445,6 +445,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="iqE-Vh-fnh"/>
                     </view>
+                    <connections>
+                        <outlet property="missionPosterLabel" destination="XPU-gZ-EJ9" id="9iV-74-6u9"/>
+                        <outlet property="missionRewardLabel" destination="wDB-i8-nIg" id="pLh-QM-1OC"/>
+                        <outlet property="missionSubtitleLabel" destination="oHH-j7-JnG" id="9Oi-Zg-NSj"/>
+                        <outlet property="missionTitleLabel" destination="vmD-GA-8Ob" id="RLO-ES-CDE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YbG-p6-PFc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
