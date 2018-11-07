@@ -9,11 +9,12 @@
 /* Begin PBXBuildFile section */
 		0C8CDED867CC11C62EF709E7 /* Pods_PostMishone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED0D737BD60431C697C0D242 /* Pods_PostMishone.framework */; };
 		57B53330218EE2CD004C89B4 /* MissionDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B5332F218EE2CD004C89B4 /* MissionDescriptionViewController.swift */; };
+		57B533322192D743004C89B4 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B533312192D743004C89B4 /* BaseTabBarController.swift */; };
+		57B533342192DCD6004C89B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57B533332192DCD6004C89B4 /* Main.storyboard */; };
 		57DA65E42173628C008B9E06 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA65E32173628C008B9E06 /* AppDelegate.swift */; };
 		57DA65E62173628C008B9E06 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA65E52173628C008B9E06 /* ViewController.swift */; };
 		57DA65EB2173628E008B9E06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57DA65EA2173628E008B9E06 /* Assets.xcassets */; };
 		57DA65EE2173628E008B9E06 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57DA65EC2173628E008B9E06 /* LaunchScreen.storyboard */; };
-		57DA65F821736523008B9E06 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57DA65F721736523008B9E06 /* Main.storyboard */; };
 		57DA65FA21736532008B9E06 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA65F921736532008B9E06 /* MainNavigationController.swift */; };
 		57DA65FC21736538008B9E06 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA65FB21736538008B9E06 /* LoginViewController.swift */; };
 		57DA66002173716D008B9E06 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA65FF2173716D008B9E06 /* RegisterViewController.swift */; };
@@ -26,13 +27,14 @@
 
 /* Begin PBXFileReference section */
 		57B5332F218EE2CD004C89B4 /* MissionDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionDescriptionViewController.swift; sourceTree = "<group>"; };
+		57B533312192D743004C89B4 /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
+		57B533332192DCD6004C89B4 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		57DA65E02173628C008B9E06 /* PostMishone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PostMishone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57DA65E32173628C008B9E06 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		57DA65E52173628C008B9E06 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		57DA65EA2173628E008B9E06 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		57DA65ED2173628E008B9E06 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		57DA65EF2173628E008B9E06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		57DA65F721736523008B9E06 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		57DA65F921736532008B9E06 /* MainNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 		57DA65FB21736538008B9E06 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		57DA65FF2173716D008B9E06 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -80,10 +82,10 @@
 		57DA65E22173628C008B9E06 /* PostMishone */ = {
 			isa = PBXGroup;
 			children = (
+				57B533332192DCD6004C89B4 /* Main.storyboard */,
 				57DA66032173DCFE008B9E06 /* PostMishone.entitlements */,
 				57DA65E32173628C008B9E06 /* AppDelegate.swift */,
 				57DA65E52173628C008B9E06 /* ViewController.swift */,
-				57DA65F721736523008B9E06 /* Main.storyboard */,
 				57DA65EA2173628E008B9E06 /* Assets.xcassets */,
 				57DA65EC2173628E008B9E06 /* LaunchScreen.storyboard */,
 				57DA65F921736532008B9E06 /* MainNavigationController.swift */,
@@ -96,6 +98,7 @@
 				57DA660A2173F0FD008B9E06 /* SettingsViewController.swift */,
 				57DA66162174320C008B9E06 /* DescribeMissionViewController.swift */,
 				57B5332F218EE2CD004C89B4 /* MissionDescriptionViewController.swift */,
+				57B533312192D743004C89B4 /* BaseTabBarController.swift */,
 			);
 			path = PostMishone;
 			sourceTree = "<group>";
@@ -186,7 +189,7 @@
 				57DA65EE2173628E008B9E06 /* LaunchScreen.storyboard in Resources */,
 				57DA6602217373B0008B9E06 /* GoogleService-Info.plist in Resources */,
 				57DA65EB2173628E008B9E06 /* Assets.xcassets in Resources */,
-				57DA65F821736523008B9E06 /* Main.storyboard in Resources */,
+				57B533342192DCD6004C89B4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,6 +281,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57B533322192D743004C89B4 /* BaseTabBarController.swift in Sources */,
 				57DA66072173E71A008B9E06 /* MainViewController.swift in Sources */,
 				57DA66052173E27C008B9E06 /* MainAppScreen.swift in Sources */,
 				57DA65FC21736538008B9E06 /* LoginViewController.swift in Sources */,

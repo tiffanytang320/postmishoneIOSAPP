@@ -49,7 +49,7 @@ class RegisterViewController : UIViewController {
     private func registerUserIntoDatabase(_ userID: String, values: [String: AnyObject]) {
         // Adding User Info
         let ref = Database.database().reference()
-        let usersReference = ref.child("users").child(userID)
+        let usersReference = ref.child("Users").child(userID)
         
         usersReference.updateChildValues(values, withCompletionBlock: { (err, ref) in
             if err != nil {

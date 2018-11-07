@@ -33,6 +33,7 @@ class DescribeMissionViewController: UIViewController {
         ref = Database.database().reference() // Firebase Reference
     }
     
+    // MARK: POSTING MISSION
     @IBAction func postMissionPressed(_ sender: Any) {
         let userID = Auth.auth().currentUser!.uid
         let timeStamp = Int(NSDate.timeIntervalSinceReferenceDate*1000)
@@ -45,8 +46,16 @@ class DescribeMissionViewController: UIViewController {
         print("missionNameText: ", missionName.text!)
         print("missionDescription: ", missionDescription.text!)
         print("reward: ", reward.text!)
+   
         
-        ref?.child("PostedMissions").childByAutoId().setValue(["Latitude": latitude, "Longitude": longitude, "UserID": userID, "timeStamp": timeStamp, "missionName": missionName.text!, "missionDescription": missionDescription.text!, "reward": reward.text!])
+        let missionID = ref.child("PostedMissions").childByAutoId().key
+        // https://postmishone.firebaseio.com/PostedMissions
+        ref?.child("PostedMissions").child(missionID!).setValue(["Latitude": latitude, "Longitude": longitude, "UserID": userID, "timeStamp": timeStamp, "missionName": missionName.text!, "missionDescription": missionDescription.text!, "reward": reward.text!])
+//        ref?.child("PostedMissions").childByAutoId().setValue(["Latitude": latitude, "Longitude": longitude, "UserID": userID, "timeStamp": timeStamp, "missionName": missionName.text!, "missionDescription": missionDescription.text!, "reward": reward.text!])
+//
+        
+        // https://postmishone.firebaseio.com/users/(currentuserid)/
+        ref?.child("Users").child(userID).child("MissionPosts").child(missionID!).setValue(missionID!)
         
         print("Mission Posted!")
         

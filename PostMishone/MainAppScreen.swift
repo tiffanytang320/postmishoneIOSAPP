@@ -172,12 +172,6 @@ class MainAppScreen: UIViewController {
     }
     
     
-    // MARK: Other
-    @IBAction func test(_ sender: Any) {
-        try! Auth.auth().signOut()
-        print("logout")
-        self.dismiss(animated: true, completion: nil)
-    }
     
 }
 
