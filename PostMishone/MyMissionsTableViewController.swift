@@ -7,40 +7,64 @@
 //
 
 import UIKit
+import Firebase
+
 
 class MyMissionsTableViewController: UITableViewController {
+    var ref: DatabaseReference!
+    var myMissions = [String]()
+    var missionIDS = [String]()
+    var test = ["1","2"]
+    let userID = Auth.auth().currentUser!.uid
+    
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewWillAppear(true)
+//        ref = Database.database().reference().child("Users").child(userID).child("MissionPosts") // Firebase Reference
+//
+//        ref?.observeSingleEvent(of: .value, with: { snapshot in
+//            for child in snapshot.children {
+//                let snap = child as! DataSnapshot
+//                let missionID = snap.value as! String
+//                print(missionID)
+//                self.missionIDS.append(missionID)
+//                print(self.missionIDS.count)
+//            }
+//        })
+//        print("inside MyMissionsTableView")
+//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        ref = Database.database().reference().child("Users").child(userID).child("MissionPosts") // Firebase Reference
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-    }
-
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        ref?.observeSingleEvent(of: .value, with: { snapshot in
+            for child in snapshot.children {
+                let snap = child as! DataSnapshot
+                let missionID = snap.value as! String
+                print(missionID)
+                self.missionIDS.append(missionID)
+                print(self.missionIDS.count)
+                self.tableView.reloadData()
+            }
+        })
+        print("inside MyMissionsTableView")
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return missionIDS.count
+//        return test.count
     }
 
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
-        // Configure the cell...
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+
+        cell.textLabel?.text = missionIDS[indexPath.row]
+//        cell.textLabel?.text = test[indexPath.row]
 
         return cell
     }
-    */
+
 
     /*
     // Override to support conditional editing of the table view.

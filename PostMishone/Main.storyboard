@@ -428,16 +428,16 @@
             </objects>
             <point key="canvasLocation" x="2724" y="330"/>
         </scene>
-        <!--Table View Controller-->
+        <!--My Missions Table View Controller-->
         <scene sceneID="a1l-Fp-TOO">
             <objects>
-                <tableViewController id="3Jb-OQ-nD7" sceneMemberID="viewController">
+                <tableViewController id="3Jb-OQ-nD7" customClass="MyMissionsTableViewController" customModule="PostMishone" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="BIg-qe-Tp1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="OzB-eL-nbG">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="OzB-eL-nbG">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OzB-eL-nbG" id="89b-D0-2cx">
@@ -455,6 +455,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lqm-jN-yvQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3705" y="334"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="S8b-gc-Pfk">
+            <objects>
+                <viewController id="OUk-6i-LGD" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7H8-bd-EHd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="KJJ-bd-K3R"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IbA-Z1-bU7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4735" y="333"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="dkj-te-666">
