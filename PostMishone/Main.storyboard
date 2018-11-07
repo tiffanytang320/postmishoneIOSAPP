@@ -396,6 +396,66 @@
             </objects>
             <point key="canvasLocation" x="3662" y="-403"/>
         </scene>
+        <!--Missions Table View Controller-->
+        <scene sceneID="chp-t1-mui">
+            <objects>
+                <tableViewController id="ojv-Ok-4nK" customClass="MissionsTableViewController" customModule="PostMishone" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="yYK-gv-gEY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="mPv-ps-sEG">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mPv-ps-sEG" id="tya-9J-blr">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ojv-Ok-4nK" id="WPy-DZ-YaG"/>
+                            <outlet property="delegate" destination="ojv-Ok-4nK" id="zaL-3t-9QO"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="" image="Social" id="GUD-lQ-2Xv"/>
+                    <connections>
+                        <segue destination="3Jb-OQ-nD7" kind="show" identifier="toMyMissions" id="CeJ-KP-ngD"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F3U-8S-ZSF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2724" y="330"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="a1l-Fp-TOO">
+            <objects>
+                <tableViewController id="3Jb-OQ-nD7" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="BIg-qe-Tp1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="OzB-eL-nbG">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OzB-eL-nbG" id="89b-D0-2cx">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="3Jb-OQ-nD7" id="Bx2-qt-1g5"/>
+                            <outlet property="delegate" destination="3Jb-OQ-nD7" id="Ivs-Kv-OQb"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lqm-jN-yvQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3705" y="334"/>
+        </scene>
         <!--Settings View Controller-->
         <scene sceneID="dkj-te-666">
             <objects>
@@ -448,7 +508,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <segue destination="4Fv-va-exN" kind="relationship" relationship="viewControllers" id="UgY-bE-dJe"/>
+                        <segue destination="ojv-Ok-4nK" kind="relationship" relationship="viewControllers" id="Iid-lT-Tna"/>
                         <segue destination="tko-We-A61" kind="relationship" relationship="viewControllers" id="K8n-2n-rQx"/>
                         <segue destination="I4e-yC-0TT" kind="relationship" relationship="viewControllers" id="m9u-nE-bA9"/>
                     </connections>
@@ -456,22 +516,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xar-8Z-76C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1796" y="-404.34782608695656"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="HWX-IS-wxk">
-            <objects>
-                <viewController id="4Fv-va-exN" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="wzt-3E-vXg">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="geu-lQ-LNN"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="" image="Social" selectedImage="Social" id="5H5-Is-7b5"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cf2-l3-8Cm" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2724" y="378"/>
         </scene>
     </scenes>
     <resources>
