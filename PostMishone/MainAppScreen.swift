@@ -19,14 +19,16 @@ import CoreLocation
     var missionPosterID: String?
     var timeStamp: Int?
     var reward: String?
+    var missionID: String?
     
-    init(title:String, subtitle:String, location:CLLocationCoordinate2D, posterID:String, timeStamp:Int, reward:String) {
+    init(title:String, subtitle:String, location:CLLocationCoordinate2D, posterID:String, timeStamp:Int, reward:String, missionID:String) {
         self.title = title
         self.subtitle = subtitle
         self.coordinate = location
         self.missionPosterID = posterID
         self.timeStamp = timeStamp
         self.reward = reward
+        self.missionID = missionID
     }
  }
 
@@ -38,6 +40,7 @@ class MainAppScreen: UIViewController {
     var longitude : Double = 0.0
     var latitude : Double = 0.0
     let userID = Auth.auth().currentUser!.uid
+    var tempanno: missionAnnotation?
     
     @IBOutlet weak var mapView: MKMapView!
     
@@ -59,21 +62,41 @@ class MainAppScreen: UIViewController {
 //        self.mapView.addAnnotation(mission)
         
         // Retreive Mission Posts and listen for changes
-        dataBaseHandle = ref?.child("PostedMissions").observe(.childAdded , with: { (snapshot) in
-            
+        dataBaseHandle = ref?.child("PostedMissions").observe(.childAdded, with: { (snapshot) in
+            print("FIREBASEobservedAdded")
             // Code to execute when a child is added under "PostedMissions"
             // MARK: missionAnnotation Creation
             // Take value from snapshot and add it to missionPostsArray
-            if let dic = snapshot.value as? [String:Any], let timeStamp = dic["timeStamp"] as? Int, let latitude = dic["Latitude"] as? Double, let longitude = dic["Longitude"] as? Double, let missionName = dic["missionName"] as? String, let missionDescription = dic["missionDescription"] as? String, let posterID = dic["UserID"] as? String, let reward = dic["reward"] as? String {
+            if let dic = snapshot.value as? [String:Any], let timeStamp = dic["timeStamp"] as? Int, let latitude = dic["Latitude"] as? Double, let longitude = dic["Longitude"] as? Double, let missionName = dic["missionName"] as? String, let missionDescription = dic["missionDescription"] as? String, let posterID = dic["UserID"] as? String, let reward = dic["reward"] as? String, let missionID = dic["missionID"] as? String {
 
-                let annotation = missionAnnotation(title: missionName, subtitle: missionDescription, location: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), posterID: posterID, timeStamp: timeStamp, reward: reward)
+                let annotation = missionAnnotation(title: missionName, subtitle: missionDescription, location: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), posterID: posterID, timeStamp: timeStamp, reward: reward, missionID: missionID)
 
-                self.mapView.addAnnotation(annotation)
-                
+//                self.mapView.addAnnotation(annotation)
+                self.tempanno = annotation
                 self.missionPostsArray.append(annotation)
+                self.mapView.addAnnotations(self.missionPostsArray)
                 
-                self.addAllPostedMissionsAnnotations() // !!! might need to change this
+//                self.addAllPostedMissionsAnnotations() // !!! might need to change this
             }
+        })
+        
+        ref?.child("PostedMissions").observe(.childRemoved, with: { (snapshot) in
+            print("FIREBASEobservedRemove")
+            if let dic = snapshot.value as? [String:Any], let missionID = dic["missionID"] as? String {
+                
+                let deletedMission = self.missionPostsArray.filter{$0.missionID == missionID}
+                
+                self.mapView.removeAnnotations(deletedMission)
+                
+                let filteredMissions = self.missionPostsArray.filter{$0.missionID != missionID}
+                
+                
+                self.missionPostsArray = filteredMissions
+                
+                print("DELETE")
+                
+            }
+            
         })
     }
     
@@ -141,6 +164,7 @@ class MainAppScreen: UIViewController {
             self.performSegue(withIdentifier: "toDescribeMission", sender: self)
             
             print("Long pressed mission at lat: \(locationCoordinate.latitude) long: \(locationCoordinate.longitude)")
+            print("Total annotations: \(mapView.annotations.count)")
         }
     }
     
@@ -157,6 +181,7 @@ class MainAppScreen: UIViewController {
             destination?.subtitle = selectedAnnotation?.subtitle ?? ""
             destination?.posterID = selectedAnnotation?.missionPosterID ?? ""
             destination?.reward = selectedAnnotation?.reward ?? ""
+            destination?.missionID = selectedAnnotation?.missionID ?? ""
             
         }
     }

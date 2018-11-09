@@ -49,13 +49,12 @@ class DescribeMissionViewController: UIViewController {
    
         
         let missionID = ref.child("PostedMissions").childByAutoId().key
-        // https://postmishone.firebaseio.com/PostedMissions
-        ref?.child("PostedMissions").child(missionID!).setValue(["Latitude": latitude, "Longitude": longitude, "UserID": userID, "timeStamp": timeStamp, "missionName": missionName.text!, "missionDescription": missionDescription.text!, "reward": reward.text!])
-//        ref?.child("PostedMissions").childByAutoId().setValue(["Latitude": latitude, "Longitude": longitude, "UserID": userID, "timeStamp": timeStamp, "missionName": missionName.text!, "missionDescription": missionDescription.text!, "reward": reward.text!])
-//
+        // Add to https://postmishone.firebaseio.com/PostedMissions
+        ref?.child("PostedMissions").child(missionID!).setValue(["Latitude": latitude, "Longitude": longitude, "UserID": userID, "timeStamp": timeStamp, "missionName": missionName.text!, "missionDescription": missionDescription.text!, "reward": reward.text!, "missionID": missionID!])
         
-        // https://postmishone.firebaseio.com/users/(currentuserid)/
-        ref?.child("Users").child(userID).child("MissionPosts").child(missionID!).setValue(missionID!)
+        // Add to https://postmishone.firebaseio.com/users/(currentuserid)/
+ref?.child("Users").child(userID).child("MissionPosts").child(missionID!).setValue(missionID!)
+        
         
         print("Mission Posted!")
         

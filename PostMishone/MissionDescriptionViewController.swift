@@ -15,6 +15,7 @@ class MissionDescriptionViewController: UIViewController {
     var subtitle = ""
     var reward = ""
     var posterID = ""
+    var missionID = ""
     
     
     @IBOutlet weak var missionTitleLabel: UILabel!
@@ -31,7 +32,7 @@ class MissionDescriptionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         ref = Database.database().reference() // Firebase Reference
-//        ref.child("users").child ///TODO
+        //        ref.child("users").child ///TODO: current does not pull anything from the database
         missionTitleLabel.text = missionTitle
         missionSubtitleLabel.text = subtitle
         missionSubtitleTextView.text = subtitle
@@ -41,6 +42,17 @@ class MissionDescriptionViewController: UIViewController {
     }
     
 
+    @IBAction func deleteMission(_ sender: Any) {
+        print("deleteMission")
+         // Remove from https://postmishone.firebaseio.com/PostedMissions
+        self.ref.child("PostedMissions").child(missionID).removeValue()
+        
+        // Remove from https://postmishone.firebaseio.com/users/(currentuserid)/
+        self.ref.child("Users").child(posterID).child("MissionPosts").child(missionID).removeValue()
+        
+        self.navigationController?.popViewController(animated: true)
+        
+    }
     /*
     // MARK: - Navigation
 
