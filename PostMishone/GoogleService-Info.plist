@@ -7,21 +7,21 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>470388914701-rc9ilml15rd6u1o9cgt24mt6tk02tivm.apps.googleusercontent.com</string>
+	<string>878935163049-p7s9gaetbf9fc6pqm9ok60rul1okucat.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.470388914701-rc9ilml15rd6u1o9cgt24mt6tk02tivm</string>
+	<string>com.googleusercontent.apps.878935163049-p7s9gaetbf9fc6pqm9ok60rul1okucat</string>
 	<key>API_KEY</key>
-	<string>AIzaSyAayzuZzy6Dnl0FJ91lVqGXqxRBNDs0lvw</string>
+	<string>AIzaSyDvmxsvfLKJREk9aXCrMh-F9NQ6LoL6-DY</string>
 	<key>GCM_SENDER_ID</key>
-	<string>470388914701</string>
+	<string>878935163049</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.vitol.Flash-Chat</string>
+	<string>com.vitol.PostMishone</string>
 	<key>PROJECT_ID</key>
-	<string>flash-chat-f2813</string>
+	<string>postmishone</string>
 	<key>STORAGE_BUCKET</key>
-	<string>flash-chat-f2813.appspot.com</string>
+	<string>postmishone.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true></true>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -33,8 +33,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:470388914701:ios:566d0690b6911051</string>
+	<string>1:878935163049:ios:ced337b3a5524d8c</string>
 	<key>DATABASE_URL</key>
-	<string>https://flash-chat-f2813.firebaseio.com</string>
+	<string>https://postmishone.firebaseio.com</string>
 </dict>
 </plist>
