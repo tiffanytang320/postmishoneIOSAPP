@@ -370,6 +370,9 @@
                                 <rect key="frame" x="135" y="564" width="105" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Accept Mission"/>
+                                <connections>
+                                    <action selector="acceptMission:" destination="ynn-RF-M2D" eventType="touchUpInside" id="uIh-cK-Zpb"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4nP-Ub-bdb">
                                 <rect key="frame" x="137" y="602" width="101" height="30"/>
@@ -472,6 +475,7 @@
         <!--View Controller-->
         <scene sceneID="S8b-gc-Pfk">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IbA-Z1-bU7" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="OUk-6i-LGD" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7H8-bd-EHd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -480,7 +484,6 @@
                         <viewLayoutGuide key="safeArea" id="KJJ-bd-K3R"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="IbA-Z1-bU7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4735" y="333"/>
         </scene>

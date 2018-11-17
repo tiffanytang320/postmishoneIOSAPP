@@ -11,6 +11,7 @@ import Firebase
 
 class MissionDescriptionViewController: UIViewController {
     var ref: DatabaseReference!
+    let userID = Auth.auth().currentUser!.uid
     var missionTitle = ""
     var subtitle = ""
     var reward = ""
@@ -53,14 +54,14 @@ class MissionDescriptionViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
         
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    
+    @IBAction func acceptMission(_ sender: Any) {
+        print("accept mission")
+        
+        ref?.child("Users").child(userID).child("AcceptedMissions").child(missionID).setValue(missionID)
+        
+        
     }
-    */
-
+    
 }

@@ -14,7 +14,6 @@ class MyMissionsTableViewController: UITableViewController {
     var ref: DatabaseReference!
     var myMissions = [String]()
     var missionIDS = [String]()
-    var test = ["1","2"]
     let userID = Auth.auth().currentUser!.uid
     
 //    override func viewDidAppear(_ animated: Bool) {
@@ -52,7 +51,6 @@ class MyMissionsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return missionIDS.count
-//        return test.count
     }
 
 
@@ -60,7 +58,6 @@ class MyMissionsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
 
         cell.textLabel?.text = missionIDS[indexPath.row]
-//        cell.textLabel?.text = test[indexPath.row]
 
         return cell
     }
