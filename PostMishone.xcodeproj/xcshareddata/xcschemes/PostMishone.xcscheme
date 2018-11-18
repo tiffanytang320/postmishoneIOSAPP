@@ -38,6 +38,16 @@
                ReferencedContainer = "container:PostMishone.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "6C4345A221A112C600B82FCB"
+               BuildableName = "PostMishoneUITests.xctest"
+               BlueprintName = "PostMishoneUITests"
+               ReferencedContainer = "container:PostMishone.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

@@ -25,6 +25,8 @@ class DescribeMissionViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.accessibilityIdentifier = "DescribeMissionViewController" // Identifier for UI Testing
+
         missionName.delegate = self
         missionDescription.delegate = self
         reward.delegate = self

@@ -25,12 +25,20 @@
 		57DA660B2173F0FD008B9E06 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA660A2173F0FD008B9E06 /* SettingsViewController.swift */; };
 		57DA66172174320C008B9E06 /* DescribeMissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA66162174320C008B9E06 /* DescribeMissionViewController.swift */; };
 		6C43459821A1000A00B82FCB /* PostMishoneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C43459721A1000A00B82FCB /* PostMishoneTests.swift */; };
+		6C4345A621A112C600B82FCB /* PostMishoneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4345A521A112C600B82FCB /* PostMishoneUITests.swift */; };
 		6C472E5521A0DD37004BF060 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6C472E5421A0DD37004BF060 /* GoogleService-Info.plist */; };
 		77A638633C42D201C8CFE6E0 /* libPods-PostMishoneTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 285096C4932F1E1BD0F4A1BB /* libPods-PostMishoneTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		6C43459A21A1000A00B82FCB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 57DA65D82173628C008B9E06 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 57DA65DF2173628C008B9E06;
+			remoteInfo = PostMishone;
+		};
+		6C4345A821A112C600B82FCB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 57DA65D82173628C008B9E06 /* Project object */;
 			proxyType = 1;
@@ -65,6 +73,9 @@
 		6C43459521A1000A00B82FCB /* PostMishoneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PostMishoneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C43459721A1000A00B82FCB /* PostMishoneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostMishoneTests.swift; sourceTree = "<group>"; };
 		6C43459921A1000A00B82FCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6C4345A321A112C600B82FCB /* PostMishoneUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PostMishoneUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C4345A521A112C600B82FCB /* PostMishoneUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostMishoneUITests.swift; sourceTree = "<group>"; };
+		6C4345A721A112C600B82FCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6C472E5421A0DD37004BF060 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A5CAC99B488AF4732501837D /* Pods-PostMishone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PostMishone.release.xcconfig"; path = "Pods/Target Support Files/Pods-PostMishone/Pods-PostMishone.release.xcconfig"; sourceTree = "<group>"; };
 		CCA40B5F46E43CAFFE6669BA /* Pods-PostMishone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PostMishone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PostMishone/Pods-PostMishone.debug.xcconfig"; sourceTree = "<group>"; };
@@ -88,6 +99,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6C4345A021A112C600B82FCB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -96,6 +114,7 @@
 			children = (
 				57DA65E22173628C008B9E06 /* PostMishone */,
 				6C43459621A1000A00B82FCB /* PostMishoneTests */,
+				6C4345A421A112C600B82FCB /* PostMishoneUITests */,
 				57DA65E12173628C008B9E06 /* Products */,
 				E75A84CA55486A039DED647B /* Pods */,
 				57E3193D8AEDDE5E51448767 /* Frameworks */,
@@ -107,6 +126,7 @@
 			children = (
 				57DA65E02173628C008B9E06 /* PostMishone.app */,
 				6C43459521A1000A00B82FCB /* PostMishoneTests.xctest */,
+				6C4345A321A112C600B82FCB /* PostMishoneUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -122,8 +142,6 @@
 				57DA65F921736532008B9E06 /* MainNavigationController.swift */,
 				57DA65FB21736538008B9E06 /* LoginViewController.swift */,
 				57DA65FF2173716D008B9E06 /* RegisterViewController.swift */,
-				6C472E5421A0DD37004BF060 /* GoogleService-Info.plist */,
-				57DA65EF2173628E008B9E06 /* Info.plist */,
 				57DA66042173E27C008B9E06 /* MainAppScreen.swift */,
 				57DA66062173E71A008B9E06 /* MainViewController.swift */,
 				57DA660A2173F0FD008B9E06 /* SettingsViewController.swift */,
@@ -131,8 +149,10 @@
 				57B5332F218EE2CD004C89B4 /* MissionDescriptionViewController.swift */,
 				57B533312192D743004C89B4 /* BaseTabBarController.swift */,
 				57B533372192ECBB004C89B4 /* MissionsTableViewController.swift */,
-				57DA66032173DCFE008B9E06 /* PostMishone.entitlements */,
 				57B533392192F1E4004C89B4 /* MyMissionsTableViewController.swift */,
+				57DA66032173DCFE008B9E06 /* PostMishone.entitlements */,
+				6C472E5421A0DD37004BF060 /* GoogleService-Info.plist */,
+				57DA65EF2173628E008B9E06 /* Info.plist */,
 			);
 			path = PostMishone;
 			sourceTree = "<group>";
@@ -153,6 +173,15 @@
 				6C43459921A1000A00B82FCB /* Info.plist */,
 			);
 			path = PostMishoneTests;
+			sourceTree = "<group>";
+		};
+		6C4345A421A112C600B82FCB /* PostMishoneUITests */ = {
+			isa = PBXGroup;
+			children = (
+				6C4345A521A112C600B82FCB /* PostMishoneUITests.swift */,
+				6C4345A721A112C600B82FCB /* Info.plist */,
+			);
+			path = PostMishoneUITests;
 			sourceTree = "<group>";
 		};
 		E75A84CA55486A039DED647B /* Pods */ = {
@@ -209,6 +238,24 @@
 			productReference = 6C43459521A1000A00B82FCB /* PostMishoneTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		6C4345A221A112C600B82FCB /* PostMishoneUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6C4345AA21A112C600B82FCB /* Build configuration list for PBXNativeTarget "PostMishoneUITests" */;
+			buildPhases = (
+				6C43459F21A112C600B82FCB /* Sources */,
+				6C4345A021A112C600B82FCB /* Frameworks */,
+				6C4345A121A112C600B82FCB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6C4345A921A112C600B82FCB /* PBXTargetDependency */,
+			);
+			name = PostMishoneUITests;
+			productName = PostMishoneUITests;
+			productReference = 6C4345A321A112C600B82FCB /* PostMishoneUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -231,6 +278,10 @@
 						CreatedOnToolsVersion = 10.1;
 						TestTargetID = 57DA65DF2173628C008B9E06;
 					};
+					6C4345A221A112C600B82FCB = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 57DA65DF2173628C008B9E06;
+					};
 				};
 			};
 			buildConfigurationList = 57DA65DB2173628C008B9E06 /* Build configuration list for PBXProject "PostMishone" */;
@@ -248,6 +299,7 @@
 			targets = (
 				57DA65DF2173628C008B9E06 /* PostMishone */,
 				6C43459421A1000A00B82FCB /* PostMishoneTests */,
+				6C4345A221A112C600B82FCB /* PostMishoneUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -265,6 +317,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		6C43459321A1000A00B82FCB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6C4345A121A112C600B82FCB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -431,6 +490,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6C43459F21A112C600B82FCB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6C4345A621A112C600B82FCB /* PostMishoneUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -438,6 +505,11 @@
 			isa = PBXTargetDependency;
 			target = 57DA65DF2173628C008B9E06 /* PostMishone */;
 			targetProxy = 6C43459A21A1000A00B82FCB /* PBXContainerItemProxy */;
+		};
+		6C4345A921A112C600B82FCB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 57DA65DF2173628C008B9E06 /* PostMishone */;
+			targetProxy = 6C4345A821A112C600B82FCB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -655,6 +727,46 @@
 			};
 			name = Release;
 		};
+		6C4345AB21A112C600B82FCB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7698B5F9DT;
+				INFOPLIST_FILE = PostMishoneUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = vitol.PostMishoneUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = PostMishone;
+			};
+			name = Debug;
+		};
+		6C4345AC21A112C600B82FCB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7698B5F9DT;
+				INFOPLIST_FILE = PostMishoneUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = vitol.PostMishoneUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = PostMishone;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -681,6 +793,15 @@
 			buildConfigurations = (
 				6C43459C21A1000A00B82FCB /* Debug */,
 				6C43459D21A1000A00B82FCB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6C4345AA21A112C600B82FCB /* Build configuration list for PBXNativeTarget "PostMishoneUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6C4345AB21A112C600B82FCB /* Debug */,
+				6C4345AC21A112C600B82FCB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

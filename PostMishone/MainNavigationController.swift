@@ -13,6 +13,8 @@ import Firebase
 class MainNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.accessibilityIdentifier = "MainViewController" // Identifier for UI Testing
+
     }
     
     override func didReceiveMemoryWarning() {

@@ -54,6 +54,7 @@ class MainAppScreen: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.accessibilityIdentifier = "MainAppScreen" // Identifier for UI Testing
         mapView.delegate = self // For showing annotation when pin is tapped
         ref = Database.database().reference() // Firebase Reference
         checkLocationServices() // Check user location settings -> initiate user map
