@@ -20,9 +20,8 @@
                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="31" translatesAutoresizingMaskIntoConstraints="NO" id="Tab-dk-kXv">
                                 <rect key="frame" x="172.5" y="318.5" width="30" height="30"/>
                             </stackView>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" showsScale="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oan-4L-QDg">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsScale="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oan-4L-QDg">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="8OH-FC-U6W" appends="YES" id="IKR-Ut-bde"/>
@@ -32,7 +31,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Tab-dk-kXv" firstAttribute="centerX" secondItem="obd-ny-oOP" secondAttribute="centerX" id="AUV-dt-hhJ"/>
+                            <constraint firstItem="oan-4L-QDg" firstAttribute="trailing" secondItem="Xfo-JI-8jI" secondAttribute="trailing" id="Bq5-Sv-z5C"/>
                             <constraint firstItem="Tab-dk-kXv" firstAttribute="centerY" secondItem="obd-ny-oOP" secondAttribute="centerY" id="D7B-tI-Np2"/>
+                            <constraint firstItem="oan-4L-QDg" firstAttribute="leading" secondItem="Xfo-JI-8jI" secondAttribute="leading" id="NC1-E2-3cV"/>
+                            <constraint firstItem="oan-4L-QDg" firstAttribute="bottom" secondItem="Xfo-JI-8jI" secondAttribute="bottom" id="PaU-uE-eSk"/>
+                            <constraint firstItem="oan-4L-QDg" firstAttribute="top" secondItem="obd-ny-oOP" secondAttribute="top" id="lwS-TN-rT5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Xfo-JI-8jI"/>
                     </view>
@@ -475,7 +478,6 @@
         <!--View Controller-->
         <scene sceneID="S8b-gc-Pfk">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="IbA-Z1-bU7" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="OUk-6i-LGD" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7H8-bd-EHd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -484,6 +486,7 @@
                         <viewLayoutGuide key="safeArea" id="KJJ-bd-K3R"/>
                     </view>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IbA-Z1-bU7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4735" y="333"/>
         </scene>

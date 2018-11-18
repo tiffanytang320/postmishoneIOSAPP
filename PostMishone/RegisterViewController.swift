@@ -46,6 +46,8 @@ class RegisterViewController : UIViewController {
         }
     }
     
+    
+    //CHANGE THIS TO ADD MORE PROFILE STUFF
     private func registerUserIntoDatabase(_ userID: String, values: [String: AnyObject]) {
         // Adding User Info
         let ref = Database.database().reference()

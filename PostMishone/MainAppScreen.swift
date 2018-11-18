@@ -76,10 +76,10 @@ class MainAppScreen: UIViewController {
                 self.missionPostsArray.append(annotation)
                 self.mapView.addAnnotations(self.missionPostsArray)
                 
-//                self.addAllPostedMissionsAnnotations() // !!! might need to change this
             }
         })
         
+        //Deleting missions
         ref?.child("PostedMissions").observe(.childRemoved, with: { (snapshot) in
             print("FIREBASEobservedRemove")
             if let dic = snapshot.value as? [String:Any], let missionID = dic["missionID"] as? String {
@@ -188,14 +188,6 @@ class MainAppScreen: UIViewController {
     
     
 
-    
-    // Upadates map with all annotations in missionPostsArray
-    func addAllPostedMissionsAnnotations() {
-        for annotation in missionPostsArray {
-            mapView.addAnnotation(annotation)
-        }
-    }
-    
     
     
 }
