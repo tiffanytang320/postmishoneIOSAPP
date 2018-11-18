@@ -24,10 +24,25 @@
 		57DA66072173E71A008B9E06 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA66062173E71A008B9E06 /* MainViewController.swift */; };
 		57DA660B2173F0FD008B9E06 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA660A2173F0FD008B9E06 /* SettingsViewController.swift */; };
 		57DA66172174320C008B9E06 /* DescribeMissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA66162174320C008B9E06 /* DescribeMissionViewController.swift */; };
+		6C43459821A1000A00B82FCB /* PostMishoneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C43459721A1000A00B82FCB /* PostMishoneTests.swift */; };
 		6C472E5521A0DD37004BF060 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6C472E5421A0DD37004BF060 /* GoogleService-Info.plist */; };
+		77A638633C42D201C8CFE6E0 /* libPods-PostMishoneTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 285096C4932F1E1BD0F4A1BB /* libPods-PostMishoneTests.a */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		6C43459A21A1000A00B82FCB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 57DA65D82173628C008B9E06 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 57DA65DF2173628C008B9E06;
+			remoteInfo = PostMishone;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		085D46E870176043DAA2868A /* Pods-PostMishoneTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PostMishoneTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PostMishoneTests/Pods-PostMishoneTests.debug.xcconfig"; sourceTree = "<group>"; };
+		285096C4932F1E1BD0F4A1BB /* libPods-PostMishoneTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PostMishoneTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		43CF2668F6CC1F0322346541 /* Pods-PostMishoneTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PostMishoneTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PostMishoneTests/Pods-PostMishoneTests.release.xcconfig"; sourceTree = "<group>"; };
 		57B5332F218EE2CD004C89B4 /* MissionDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionDescriptionViewController.swift; sourceTree = "<group>"; };
 		57B533312192D743004C89B4 /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 		57B533332192DCD6004C89B4 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -47,6 +62,9 @@
 		57DA66062173E71A008B9E06 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		57DA660A2173F0FD008B9E06 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		57DA66162174320C008B9E06 /* DescribeMissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescribeMissionViewController.swift; sourceTree = "<group>"; };
+		6C43459521A1000A00B82FCB /* PostMishoneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PostMishoneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C43459721A1000A00B82FCB /* PostMishoneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostMishoneTests.swift; sourceTree = "<group>"; };
+		6C43459921A1000A00B82FCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6C472E5421A0DD37004BF060 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A5CAC99B488AF4732501837D /* Pods-PostMishone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PostMishone.release.xcconfig"; path = "Pods/Target Support Files/Pods-PostMishone/Pods-PostMishone.release.xcconfig"; sourceTree = "<group>"; };
 		CCA40B5F46E43CAFFE6669BA /* Pods-PostMishone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PostMishone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PostMishone/Pods-PostMishone.debug.xcconfig"; sourceTree = "<group>"; };
@@ -62,6 +80,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6C43459221A1000A00B82FCB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				77A638633C42D201C8CFE6E0 /* libPods-PostMishoneTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -69,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				57DA65E22173628C008B9E06 /* PostMishone */,
+				6C43459621A1000A00B82FCB /* PostMishoneTests */,
 				57DA65E12173628C008B9E06 /* Products */,
 				E75A84CA55486A039DED647B /* Pods */,
 				57E3193D8AEDDE5E51448767 /* Frameworks */,
@@ -79,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				57DA65E02173628C008B9E06 /* PostMishone.app */,
+				6C43459521A1000A00B82FCB /* PostMishoneTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -113,8 +141,18 @@
 			isa = PBXGroup;
 			children = (
 				ED0D737BD60431C697C0D242 /* Pods_PostMishone.framework */,
+				285096C4932F1E1BD0F4A1BB /* libPods-PostMishoneTests.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6C43459621A1000A00B82FCB /* PostMishoneTests */ = {
+			isa = PBXGroup;
+			children = (
+				6C43459721A1000A00B82FCB /* PostMishoneTests.swift */,
+				6C43459921A1000A00B82FCB /* Info.plist */,
+			);
+			path = PostMishoneTests;
 			sourceTree = "<group>";
 		};
 		E75A84CA55486A039DED647B /* Pods */ = {
@@ -122,6 +160,8 @@
 			children = (
 				CCA40B5F46E43CAFFE6669BA /* Pods-PostMishone.debug.xcconfig */,
 				A5CAC99B488AF4732501837D /* Pods-PostMishone.release.xcconfig */,
+				085D46E870176043DAA2868A /* Pods-PostMishoneTests.debug.xcconfig */,
+				43CF2668F6CC1F0322346541 /* Pods-PostMishoneTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -149,13 +189,33 @@
 			productReference = 57DA65E02173628C008B9E06 /* PostMishone.app */;
 			productType = "com.apple.product-type.application";
 		};
+		6C43459421A1000A00B82FCB /* PostMishoneTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6C43459E21A1000A00B82FCB /* Build configuration list for PBXNativeTarget "PostMishoneTests" */;
+			buildPhases = (
+				29D6388DF149E9AF640CE8D5 /* [CP] Check Pods Manifest.lock */,
+				6C43459121A1000A00B82FCB /* Sources */,
+				6C43459221A1000A00B82FCB /* Frameworks */,
+				6C43459321A1000A00B82FCB /* Resources */,
+				013A7A5973BDE6C2A2DD48D8 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6C43459B21A1000A00B82FCB /* PBXTargetDependency */,
+			);
+			name = PostMishoneTests;
+			productName = PostMishoneTests;
+			productReference = 6C43459521A1000A00B82FCB /* PostMishoneTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		57DA65D82173628C008B9E06 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1000;
+				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = "Victor Liang";
 				TargetAttributes = {
@@ -166,6 +226,10 @@
 								enabled = 1;
 							};
 						};
+					};
+					6C43459421A1000A00B82FCB = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 57DA65DF2173628C008B9E06;
 					};
 				};
 			};
@@ -183,6 +247,7 @@
 			projectRoot = "";
 			targets = (
 				57DA65DF2173628C008B9E06 /* PostMishone */,
+				6C43459421A1000A00B82FCB /* PostMishoneTests */,
 			);
 		};
 /* End PBXProject section */
@@ -199,9 +264,64 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6C43459321A1000A00B82FCB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		013A7A5973BDE6C2A2DD48D8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-PostMishoneTests/Pods-PostMishoneTests-resources.sh",
+				"${PODS_ROOT}/GTMOAuth2/Source/Touch/GTMOAuth2ViewTouch.xib",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GTMOAuth2ViewTouch.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PostMishoneTests/Pods-PostMishoneTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		29D6388DF149E9AF640CE8D5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PostMishoneTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		8FE6A5EE5DDA4B4D059ADCF7 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -255,13 +375,13 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-PostMishone/Pods-PostMishone-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
-				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2-framework/GTMOAuth2.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher-framework/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac-framework/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities-framework/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD-framework/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library-framework/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb-framework/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -303,7 +423,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6C43459121A1000A00B82FCB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6C43459821A1000A00B82FCB /* PostMishoneTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6C43459B21A1000A00B82FCB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 57DA65DF2173628C008B9E06 /* PostMishone */;
+			targetProxy = 6C43459A21A1000A00B82FCB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		57DA65EC2173628E008B9E06 /* LaunchScreen.storyboard */ = {
@@ -475,6 +611,50 @@
 			};
 			name = Release;
 		};
+		6C43459C21A1000A00B82FCB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 085D46E870176043DAA2868A /* Pods-PostMishoneTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7698B5F9DT;
+				INFOPLIST_FILE = PostMishoneTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = vitol.PostMishoneTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PostMishone.app/PostMishone";
+			};
+			name = Debug;
+		};
+		6C43459D21A1000A00B82FCB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 43CF2668F6CC1F0322346541 /* Pods-PostMishoneTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7698B5F9DT;
+				INFOPLIST_FILE = PostMishoneTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = vitol.PostMishoneTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PostMishone.app/PostMishone";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -492,6 +672,15 @@
 			buildConfigurations = (
 				57DA65F32173628E008B9E06 /* Debug */,
 				57DA65F42173628E008B9E06 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6C43459E21A1000A00B82FCB /* Build configuration list for PBXNativeTarget "PostMishoneTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6C43459C21A1000A00B82FCB /* Debug */,
+				6C43459D21A1000A00B82FCB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

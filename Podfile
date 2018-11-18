@@ -14,3 +14,15 @@ target 'PostMishone' do
   pod 'GoogleSignIn'
 
 end
+
+target 'PostMishoneTests' do 
+
+  pod 'Firebase'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Database'
+  pod 'SVProgressHUD'
+  pod 'GoogleSignIn'
+
+
+end
+
