@@ -9,6 +9,9 @@
 import UIKit
 import Firebase
 import GoogleSignIn
+import FBSDKCoreKit
+import FBSDKLoginKit
+
 
 class LoginViewController : UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
@@ -18,7 +21,25 @@ class LoginViewController : UIViewController {
         super.viewDidLoad()
         view.accessibilityIdentifier = "LoginViewController"
 
+        //changes*************
+        let button = FBSDKLoginButton()
+        view.addSubview(button)
+        button.frame = CGRect(x: 16, y: 450, width: view.frame.width - 32, height: 50 )
     }
+    
+//    func loginButtonDidLogOut(_ button: FBSDKLoginButton) {
+//        print("Facebook logged out")
+//    }
+//
+//    func loginButton(_ button:FBSDKLoginButton) {
+//        if button.accessibilityActivate() {
+//            self.navigationController?.popViewController(animated: false)
+//            print("Log in success")
+//        } else {
+//            print("error")
+//            return
+//        }
+//    }
     
     
     
