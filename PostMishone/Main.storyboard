@@ -134,6 +134,7 @@
                     </navigationBar>
                     <connections>
                         <segue destination="U2O-7o-KpI" kind="relationship" relationship="rootViewController" id="lI3-cP-Dtp"/>
+                        <segue destination="hmX-CF-BU7" kind="show" identifier="toMainAppScreen" id="3j4-Ko-JX7"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HYW-vg-7gn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -557,4 +558,7 @@
         <image name="Profile" width="30" height="30"/>
         <image name="Social" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="3j4-Ko-JX7"/>
+    </inferredMetricsTieBreakers>
 </document>

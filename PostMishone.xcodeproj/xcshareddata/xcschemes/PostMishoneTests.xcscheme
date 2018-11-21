@@ -17,9 +17,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6C4345A221A112C600B82FCB"
-               BuildableName = "PostMishoneUITests.xctest"
-               BlueprintName = "PostMishoneUITests"
+               BlueprintIdentifier = "6C43459421A1000A00B82FCB"
+               BuildableName = "PostMishoneTests.xctest"
+               BlueprintName = "PostMishoneTests"
                ReferencedContainer = "container:PostMishone.xcodeproj">
             </BuildableReference>
          </TestableReference>

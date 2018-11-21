@@ -28,8 +28,16 @@ class SettingsViewController: UIViewController {
 }
     
     @IBAction func handleLogOut(_ sender: Any) {
-        print("logout")
-        try! Auth.auth().signOut()
+//        print("logout")
+//        try! Auth.auth().signOut()
+        
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+        
         self.dismiss(animated: true, completion: nil)
     }
     
