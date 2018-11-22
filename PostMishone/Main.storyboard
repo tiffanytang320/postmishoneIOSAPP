@@ -493,32 +493,65 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4jK-RY-slr">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4jK-RY-slr">
                                 <rect key="frame" x="160" y="547" width="55" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Log Out"/>
                                 <connections>
                                     <action selector="handleLogOut:" destination="I4e-yC-0TT" eventType="touchUpInside" id="BQs-vM-NoS"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qJt-RC-fax">
-                                <rect key="frame" x="153" y="102" width="68" height="30"/>
+                                <rect key="frame" x="153" y="123" width="68" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GM0-fL-ta4">
+                                <rect key="frame" x="87.5" y="233.5" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="Yed-m3-UNH"/>
+                                    <constraint firstAttribute="width" constant="200" id="fqe-6C-bKb"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rOi-5W-JFE">
+                                <rect key="frame" x="165" y="441" width="45" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VmM-cM-cCw">
+                                <rect key="frame" x="167" y="470" width="41" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="GM0-fL-ta4" firstAttribute="centerX" secondItem="LQy-lo-oZZ" secondAttribute="centerX" id="6aK-z5-yXf"/>
+                            <constraint firstItem="rOi-5W-JFE" firstAttribute="centerX" secondItem="LQy-lo-oZZ" secondAttribute="centerX" id="Ada-Jb-wV6"/>
+                            <constraint firstItem="rOi-5W-JFE" firstAttribute="top" secondItem="GM0-fL-ta4" secondAttribute="bottom" constant="7.5" id="Qit-2T-CQY"/>
+                            <constraint firstItem="4jK-RY-slr" firstAttribute="leading" secondItem="GM0-fL-ta4" secondAttribute="trailing" constant="-127.5" id="SlC-Rt-ah7"/>
+                            <constraint firstItem="VmM-cM-cCw" firstAttribute="centerX" secondItem="LQy-lo-oZZ" secondAttribute="centerX" id="lpY-HB-es1"/>
+                            <constraint firstItem="4jK-RY-slr" firstAttribute="top" secondItem="GM0-fL-ta4" secondAttribute="bottom" constant="113.5" id="pUy-a8-REZ"/>
+                            <constraint firstItem="VmM-cM-cCw" firstAttribute="top" secondItem="GM0-fL-ta4" secondAttribute="bottom" constant="36.5" id="tTB-FP-Zff"/>
+                            <constraint firstItem="GM0-fL-ta4" firstAttribute="centerY" secondItem="LQy-lo-oZZ" secondAttribute="centerY" id="zYu-iq-6H2"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="R0c-rI-hrd"/>
                     </view>
                     <tabBarItem key="tabBarItem" image="Profile" selectedImage="Profile" id="NXs-xw-a93">
                         <color key="badgeColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                     </tabBarItem>
+                    <connections>
+                        <outlet property="uiemail" destination="VmM-cM-cCw" id="6q2-If-gT7"/>
+                        <outlet property="uiimgvpropic" destination="GM0-fL-ta4" id="kSc-Ny-n2j"/>
+                        <outlet property="uiname" destination="rOi-5W-JFE" id="c9e-82-3kI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sko-Bw-P6Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2724" y="-1179"/>
+            <point key="canvasLocation" x="2724" y="-1179.7601199400301"/>
         </scene>
         <!--Base Tab Bar Controller-->
         <scene sceneID="gG0-UB-6tj">

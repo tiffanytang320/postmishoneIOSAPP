@@ -16,6 +16,7 @@ target 'PostMishone' do
   pod 'FBSDKLoginKit'
   pod 'Bolts'
   pod 'SwiftyJSON'
+  pod 'Firebase/Storage'
 
 end
 

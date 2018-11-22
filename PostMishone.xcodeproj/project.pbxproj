@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		034D3F6F21A544A30080C0A8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 034D3F6E21A544A20080C0A8 /* GoogleService-Info.plist */; };
+		03C497B821A6723600013735 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 03C497B721A6723600013735 /* GoogleService-Info.plist */; };
 		0C8CDED867CC11C62EF709E7 /* Pods_PostMishone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED0D737BD60431C697C0D242 /* Pods_PostMishone.framework */; };
 		57B53330218EE2CD004C89B4 /* MissionDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B5332F218EE2CD004C89B4 /* MissionDescriptionViewController.swift */; };
 		57B533322192D743004C89B4 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B533312192D743004C89B4 /* BaseTabBarController.swift */; };
@@ -48,7 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		034D3F6E21A544A20080C0A8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		03C497B721A6723600013735 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		085D46E870176043DAA2868A /* Pods-PostMishoneTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PostMishoneTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PostMishoneTests/Pods-PostMishoneTests.debug.xcconfig"; sourceTree = "<group>"; };
 		285096C4932F1E1BD0F4A1BB /* libPods-PostMishoneTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PostMishoneTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		43CF2668F6CC1F0322346541 /* Pods-PostMishoneTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PostMishoneTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PostMishoneTests/Pods-PostMishoneTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -143,10 +143,10 @@
 				57DA65FB21736538008B9E06 /* LoginViewController.swift */,
 				57DA65FF2173716D008B9E06 /* RegisterViewController.swift */,
 				57DA66042173E27C008B9E06 /* MainAppScreen.swift */,
-				034D3F6E21A544A20080C0A8 /* GoogleService-Info.plist */,
 				57DA66062173E71A008B9E06 /* MainViewController.swift */,
 				57DA660A2173F0FD008B9E06 /* SettingsViewController.swift */,
 				57DA66162174320C008B9E06 /* DescribeMissionViewController.swift */,
+				03C497B721A6723600013735 /* GoogleService-Info.plist */,
 				57B5332F218EE2CD004C89B4 /* MissionDescriptionViewController.swift */,
 				57B533312192D743004C89B4 /* BaseTabBarController.swift */,
 				57B533372192ECBB004C89B4 /* MissionsTableViewController.swift */,
@@ -310,7 +310,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				57DA65EE2173628E008B9E06 /* LaunchScreen.storyboard in Resources */,
-				034D3F6F21A544A30080C0A8 /* GoogleService-Info.plist in Resources */,
+				03C497B821A6723600013735 /* GoogleService-Info.plist in Resources */,
 				57DA65EB2173628E008B9E06 /* Assets.xcassets in Resources */,
 				57B533342192DCD6004C89B4 /* Main.storyboard in Resources */,
 			);
