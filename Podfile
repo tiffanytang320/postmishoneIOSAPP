@@ -12,7 +12,10 @@ target 'PostMishone' do
   pod 'Firebase/Database'
   pod 'SVProgressHUD'
   pod 'GoogleSignIn'
+  pod 'FBSDKCoreKit'
   pod 'FBSDKLoginKit'
+  pod 'Bolts'
+  pod 'SwiftyJSON'
 
 end
 
@@ -26,4 +29,3 @@ target 'PostMishoneTests' do
   pod 'FBSDKLoginKit'
 
 end
-

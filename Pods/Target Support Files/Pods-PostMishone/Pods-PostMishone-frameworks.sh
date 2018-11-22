@@ -151,6 +151,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac-framework/GoogleToolboxForMac.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/GoogleUtilities-framework/GoogleUtilities.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SVProgressHUD-framework/SVProgressHUD.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/leveldb-library-framework/leveldb.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/nanopb-framework/nanopb.framework"
 fi
@@ -163,6 +164,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac-framework/GoogleToolboxForMac.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/GoogleUtilities-framework/GoogleUtilities.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SVProgressHUD-framework/SVProgressHUD.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/leveldb-library-framework/leveldb.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/nanopb-framework/nanopb.framework"
 fi

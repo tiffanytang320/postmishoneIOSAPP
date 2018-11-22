@@ -11,36 +11,71 @@ import Firebase
 import GoogleSignIn
 import FBSDKCoreKit
 import FBSDKLoginKit
+import SwiftyJSON
 
 
-class LoginViewController : UIViewController {
+class LoginViewController : UIViewController, FBSDKLoginButtonDelegate {
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        if error != nil {
+            print(error.localizedDescription)
+            return
+        }
+        let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+        Auth.auth().signInAndRetrieveData(with: credential) { (authResult, err) in
+            if err != nil {
+                print("Problem authenticating with firebase")
+                return
+            }
+            // User is signed in
+            FBSDKGraphRequest(graphPath: "/me", parameters: ["fields": "id, name, email, picture.width(480).height(480)"])?.start {
+                (connection, result, err) in
+                if err != nil {
+                    print("Failed to start graph request", err)
+                    return
+                }
+                let json = JSON(result)
+                print(json)
+                let userID = Auth.auth().currentUser!.uid
+                let values = ["email": json["email"].stringValue] as [String : Any] // TODO: add username (change password)
+                
+                self.registerUserIntoDatabase(userID, values: values as [String : AnyObject])
+            }
+            
+            print("Facebook log in success")
+            self.navigationController?.popViewController(animated: false)
+        }
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        print("Facebook logged out")
+    }
+    
+    private func registerUserIntoDatabase(_ userID: String, values: [String: AnyObject]) {
+        // Adding User Info
+        let ref = Database.database().reference()
+        let usersReference = ref.child("Users").child(userID)
+        
+        usersReference.updateChildValues(values, withCompletionBlock: { (err, ref) in
+            if err != nil {
+                print(err!)
+                return
+            }
+            print("Successfully Added a New User to the Database")
+        })
+    }
+    
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.accessibilityIdentifier = "LoginViewController"
-
         //changes*************
         let button = FBSDKLoginButton()
         view.addSubview(button)
-        button.frame = CGRect(x: 16, y: 450, width: view.frame.width - 32, height: 50 )
+        button.frame = CGRect(x: 16, y: 450, width: view.frame.width - 32, height: 28 )
+        button.delegate = self
+        button.readPermissions = ["email", "public_profile"]
     }
-    
-//    func loginButtonDidLogOut(_ button: FBSDKLoginButton) {
-//        print("Facebook logged out")
-//    }
-//
-//    func loginButton(_ button:FBSDKLoginButton) {
-//        if button.accessibilityActivate() {
-//            self.navigationController?.popViewController(animated: false)
-//            print("Log in success")
-//        } else {
-//            print("error")
-//            return
-//        }
-//    }
-    
     
     
     @IBAction func loginTapped(_ sender: Any) {
