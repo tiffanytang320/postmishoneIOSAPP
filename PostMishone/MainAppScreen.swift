@@ -54,10 +54,12 @@ class MainAppScreen: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.accessibilityIdentifier = "MainAppScreen" // Identifier for UI Testing
         mapView.delegate = self // For showing annotation when pin is tapped
         ref = Database.database().reference() // Firebase Reference
         checkLocationServices() // Check user location settings -> initiate user map
+        
+//        let mission = missionAnnotation(title: "custom annotation", subtitle: "custom sub", location: CLLocationCoordinate2D(latitude: 49.26044, longitude: -123.24), posterID: "customposterID")
+//        self.mapView.addAnnotation(mission)
         
         // Retreive Mission Posts and listen for changes
         dataBaseHandle = ref?.child("PostedMissions").observe(.childAdded, with: { (snapshot) in

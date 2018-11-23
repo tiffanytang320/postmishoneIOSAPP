@@ -25,6 +25,8 @@ class MissionDescriptionViewController: UIViewController {
     @IBOutlet weak var missionRewardLabel: UILabel!
     @IBOutlet weak var missionPosterLabel: UILabel!
     
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
@@ -40,9 +42,15 @@ class MissionDescriptionViewController: UIViewController {
         missionRewardLabel.text = reward
         missionPosterLabel.text = posterID
         
+        
+        
     }
     
-
+    @IBAction func chat(_ sender: UIButton) {
+      //  self.performSegue(withIdentifier: "toChat", sender: self)
+    }
+    
+    
     @IBAction func deleteMission(_ sender: Any) {
         print("deleteMission")
          // Remove from https://postmishone.firebaseio.com/PostedMissions

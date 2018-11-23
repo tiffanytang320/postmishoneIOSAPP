@@ -7,22 +7,23 @@ target 'PostMishone' do
 
   # Pods for PostMishone
 
-  pod 'Firebase'
+  # pod 'Firebase'
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
   pod 'SVProgressHUD'
   pod 'GoogleSignIn'
 
-end
+ target 'PostMishoneTests' do 
 
-target 'PostMishoneTests' do 
+inherit! :search_paths
 
   pod 'Firebase'
-  pod 'Firebase/Auth'
-  pod 'Firebase/Database'
-  pod 'SVProgressHUD'
-  pod 'GoogleSignIn'
+  
 
 
 end
+
+end
+
+
 
