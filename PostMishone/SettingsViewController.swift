@@ -31,68 +31,71 @@ class SettingsViewController: UIViewController {
         self.uiimgvpropic.clipsToBounds = true
         
         if FBSDKAccessToken.current() != nil {
-        if let user = Auth.auth().currentUser {
-            // user signed in
-            let name = user.displayName
-            let email = user.email
-            let photoUrl = user.photoURL
-            let uid = user.uid
-            
-            
-            self.uiname.text = name
-            self.uiemail.text = email
-            
-            let data = NSData(contentsOf: photoUrl!)
-            self.uiimgvpropic.image = UIImage(data: data! as Data)
-            
-            // reference to firebase storage
-            let storage = Storage.storage()
-            // refer our storage service
-            let storageRef = storage.reference(forURL: "gs://postmishone.appspot.com")
-            
-            FBSDKGraphRequest(graphPath: "me/picture", parameters: ["height":300, "width":300, "redirect": false])?.start(completionHandler: { (connection, result, err) in
-                if err == nil {
-                    let json = JSON(result)
-                    print(json["data"]["url"].stringValue)
-                } else {
-                    print("Failed to start graph request", err)
-                    return
-                }
+            if let user = Auth.auth().currentUser {
+                // user signed in
+                let name = user.displayName
+                let email = user.email
+                let photoUrl = user.photoURL
+                let uid = user.uid
                 
+                
+                self.uiname.text = name
+                self.uiemail.text = email
+                
+                let data = NSData(contentsOf: photoUrl!)
+                self.uiimgvpropic.image = UIImage(data: data! as Data)
+                
+                // reference to firebase storage
+                let store = Storage.storage()
+                // refer our storage service
+                let storeRef = store.reference(forURL: "gs://postmishone.appspot.com")
+                // access files and paths
+                let userProfilesRef = storeRef.child("images/profiles/\(uid)")
+                
+                FBSDKGraphRequest(graphPath: "/me", parameters: ["fields": "id, name, email, picture.width(480).height(480)"])?.start(completionHandler: { (connection, result, err) in
+                    if err == nil {
+                        let json = result as! [String: AnyObject]
+                        ////
+                        // Data in memory
+                        let FBid = json["id"] as? String
+                        print(FBid)
+                        
+                        let nsurl = NSURL(string: "https://graph.facebook.com/\(FBid!)/picture?type=large&return_ssl_resources=1")
+                        let imageData = UIImage(data: NSData(contentsOf: nsurl! as URL)! as Data)
+                        guard let imgData = imageData?.jpegData(compressionQuality: 0.75) else {return}
+                        
+                        // Upload the file to the path "images/rivers.jpg"
+                        let uploadTask = userProfilesRef.putData(imgData, metadata: nil) { (metadata, error) in
+                            guard let metadata = metadata else {
+                                // Uh-oh, an error occurred!
+                                print("Error metadata")
+                                return
+                            }
+                            // Metadata contains file metadata such as size, content-type.
+                            let size = metadata.size
+                            // You can also access to download URL after upload.
+                            userProfilesRef.downloadURL { (url, error) in
+                                guard let downloadURL = url else {
+                                    // Uh-oh, an error occurred!
+                                    print("Error downloadURL")
+                                    return
+                                }
+                            }
+                        }
+                        self.uiimgvpropic.image = UIImage(data: imgData)
+                        ////
+                    } else {
+                        print("Failed to start graph request", err)
+                        return
+                    }
                 })
-            
-            
-//            var profilePic = FBSDKGraphRequest(graphPath: "me/picture", parameters: ["height":300, "width":300, "redirect": false], httpMethod: "GET")
-//            profilePic?.start(completionHandler: {(connection, result, error) -> Void in
-//
-//                if error == nil {
-//                    let dictionary = result as? NSDictionary
-//                    let data = dictionary?.object(forKey: "data")
-//
-//                    let urlPic = (data?.object(forKey: "url"))! as! String
-//
-//                    if let imageData = NSData(contentsOf: NSURL(string:urlPic)) {
-//                        let profilePicRef = storageRef.child(user.uid+"/profile_pic.jpg")
-//
-//                        let uploadTask = profilePicRef.putData(imageData, metadata: nil){
-//                            metadata,error in
-//
-//                            if(error == nil) {
-//                                let downloadUrl = metadata!.downloadURL
-//                            } else {
-//                                print("Error in downloading image")
-//                            }
-//                        }
-//
-//                    }
-//                }
-//
-//            })
-            
-        } else {
-            // no user is signed in
+            } else {
+                // no user is signed in
+                print("No user is signed in")
+            }
         }
-    }
+        
+        // do these if it is not signed in using facebook
         let user = Auth.auth().currentUser
         let name = user?.displayName
         let email = user?.email
