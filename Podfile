@@ -12,6 +12,7 @@ target 'PostMishone' do
   pod 'Firebase/Database'
   pod 'SVProgressHUD'
   pod 'GoogleSignIn'
+  pod 'Firebase/Storage'
   pod 'PayPal-iOS-SDK'
 
  target 'PostMishoneTests' do 

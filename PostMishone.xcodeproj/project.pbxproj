@@ -24,9 +24,10 @@
 		57DA66072173E71A008B9E06 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA66062173E71A008B9E06 /* MainViewController.swift */; };
 		57DA660B2173F0FD008B9E06 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA660A2173F0FD008B9E06 /* SettingsViewController.swift */; };
 		57DA66172174320C008B9E06 /* DescribeMissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA66162174320C008B9E06 /* DescribeMissionViewController.swift */; };
-		6C43459821A1000A00B82FCB /* PostMishoneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C43459721A1000A00B82FCB /* PostMishoneTests.swift */; };
 		6C472E5521A0DD37004BF060 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6C472E5421A0DD37004BF060 /* GoogleService-Info.plist */; };
 		9220982BE701735AA6F3FAF5 /* Pods_PostMishoneTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E75CF88EFF3AB5CFF13D3D2D /* Pods_PostMishoneTests.framework */; };
+		9833811821A9DB43007C1673 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9833811721A9DB42007C1673 /* Extensions.swift */; };
+		9833811A21A9E316007C1673 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9833811921A9E316007C1673 /* UserCell.swift */; };
 		98338A2B21A5E93800BB31D0 /* ChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98338A2A21A5E93800BB31D0 /* ChatTableViewController.swift */; };
 		98338A2D21A5F5E300BB31D0 /* NewMessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98338A2C21A5F5E300BB31D0 /* NewMessageTableViewController.swift */; };
 		98338A2F21A60BBC00BB31D0 /* ChatLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98338A2E21A60BBC00BB31D0 /* ChatLogViewController.swift */; };
@@ -65,9 +66,9 @@
 		57DA660A2173F0FD008B9E06 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		57DA66162174320C008B9E06 /* DescribeMissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescribeMissionViewController.swift; sourceTree = "<group>"; };
 		6C43459521A1000A00B82FCB /* PostMishoneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PostMishoneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6C43459721A1000A00B82FCB /* PostMishoneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostMishoneTests.swift; sourceTree = "<group>"; };
-		6C43459921A1000A00B82FCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6C472E5421A0DD37004BF060 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9833811721A9DB42007C1673 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = /Users/tiffany/Downloads/CPEN321/postmishoneIOSAPP/PostMishone/Extensions.swift; sourceTree = "<absolute>"; };
+		9833811921A9E316007C1673 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		98338A2A21A5E93800BB31D0 /* ChatTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewController.swift; sourceTree = "<group>"; };
 		98338A2C21A5F5E300BB31D0 /* NewMessageTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageTableViewController.swift; sourceTree = "<group>"; };
 		98338A2E21A60BBC00BB31D0 /* ChatLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLogViewController.swift; sourceTree = "<group>"; };
@@ -101,7 +102,6 @@
 			isa = PBXGroup;
 			children = (
 				57DA65E22173628C008B9E06 /* PostMishone */,
-				6C43459621A1000A00B82FCB /* PostMishoneTests */,
 				57DA65E12173628C008B9E06 /* Products */,
 				E75A84CA55486A039DED647B /* Pods */,
 				57E3193D8AEDDE5E51448767 /* Frameworks */,
@@ -142,6 +142,8 @@
 				98338A2A21A5E93800BB31D0 /* ChatTableViewController.swift */,
 				98338A2C21A5F5E300BB31D0 /* NewMessageTableViewController.swift */,
 				98338A2E21A60BBC00BB31D0 /* ChatLogViewController.swift */,
+				9833811721A9DB42007C1673 /* Extensions.swift */,
+				9833811921A9E316007C1673 /* UserCell.swift */,
 			);
 			path = PostMishone;
 			sourceTree = "<group>";
@@ -153,15 +155,6 @@
 				E75CF88EFF3AB5CFF13D3D2D /* Pods_PostMishoneTests.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		6C43459621A1000A00B82FCB /* PostMishoneTests */ = {
-			isa = PBXGroup;
-			children = (
-				6C43459721A1000A00B82FCB /* PostMishoneTests.swift */,
-				6C43459921A1000A00B82FCB /* Info.plist */,
-			);
-			path = PostMishoneTests;
 			sourceTree = "<group>";
 		};
 		E75A84CA55486A039DED647B /* Pods */ = {
@@ -426,6 +419,8 @@
 				57DA66172174320C008B9E06 /* DescribeMissionViewController.swift in Sources */,
 				57DA65E42173628C008B9E06 /* AppDelegate.swift in Sources */,
 				57B5333A2192F1E4004C89B4 /* MyMissionsTableViewController.swift in Sources */,
+				9833811A21A9E316007C1673 /* UserCell.swift in Sources */,
+				9833811821A9DB43007C1673 /* Extensions.swift in Sources */,
 				57DA660B2173F0FD008B9E06 /* SettingsViewController.swift in Sources */,
 				98338A2B21A5E93800BB31D0 /* ChatTableViewController.swift in Sources */,
 			);
@@ -435,7 +430,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6C43459821A1000A00B82FCB /* PostMishoneTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -584,14 +578,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = PostMishone/PostMishone.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7698B5F9DT;
+				DEVELOPMENT_TEAM = 62Y272VFVK;
 				INFOPLIST_FILE = PostMishone/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.vitol.PostMishone;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vitol.PostMishone10;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -605,14 +599,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = PostMishone/PostMishone.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7698B5F9DT;
+				DEVELOPMENT_TEAM = 62Y272VFVK;
 				INFOPLIST_FILE = PostMishone/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.vitol.PostMishone;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vitol.PostMishone10;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

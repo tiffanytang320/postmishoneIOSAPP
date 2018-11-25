@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/tiffany/Downloads/CPEN321/postmishoneIOSAPP/PostMishone/Extensions.swift">
+   </FileRef>
+   <FileRef
       location = "group:PostMishone.xcodeproj">
    </FileRef>
    <FileRef
