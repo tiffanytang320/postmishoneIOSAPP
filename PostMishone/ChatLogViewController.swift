@@ -11,16 +11,17 @@ import Firebase
 
 class ChatLogViewController: UICollectionViewController, UITextFieldDelegate{
     
-   /* var usera: User? {
+  var usera: User? {
        didSet{
-           //navigationItem.title = user?.email
-             self.navigationItem.title = "hello"
-            print("user changed")
-        print(usera)
+        print(usera!.username)
+        self.navigationItem.title = usera?.username
+        print(navigationItem.title)
+        print("user changed")
+        print(usera!.id)
         }
-    }*/
+    }
     
-    var usera = User()
+ //   var usera = User()
     
     lazy var inputTextField: UITextField = {
         let textField = UITextField()
@@ -31,16 +32,14 @@ class ChatLogViewController: UICollectionViewController, UITextFieldDelegate{
     }()
     
     override func viewDidLoad(){
+        
         super.viewDidLoad()
         
         collectionView?.backgroundColor = UIColor.white
         
         setupInputComponents()
         
-     //   print(user.id as Any)
-      //  print(user)
-
-        self.navigationItem.title = "try"
+        self.navigationItem.title = usera!.username
         
     }
     
@@ -53,9 +52,10 @@ class ChatLogViewController: UICollectionViewController, UITextFieldDelegate{
         
         // Place the text field box at the bottom
         containerView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+       // containerView.bottomAnchor.constraint(equalToConstant: 50).isActive = true
         containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         containerView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-        containerView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        containerView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
         //initialize Send Button
         let sendButton = UIButton(type: .system)
@@ -95,8 +95,8 @@ class ChatLogViewController: UICollectionViewController, UITextFieldDelegate{
     @objc func handleSend(){
         let ref = Database.database().reference().child("Messages")
         let childRef = ref.childByAutoId()
-        print(usera as Any)
-        let toId = "why cant you work"
+
+        let toId = usera?.id ////////// TO SHOULD BE THE REAL TOID
         let fromId = Auth.auth().currentUser!.uid
         let timeStamp = Int(NSDate.timeIntervalSinceReferenceDate*1000)
         let values = ["text": inputTextField.text!, "toId": toId as Any, "fromId": fromId, "timeStamp": timeStamp]
@@ -104,7 +104,7 @@ class ChatLogViewController: UICollectionViewController, UITextFieldDelegate{
     }
     
     @objc func setReceiver(user: User){
-            self.usera = user
+            usera = user
     }
 
     // set "enter" as the send button also
@@ -112,4 +112,5 @@ class ChatLogViewController: UICollectionViewController, UITextFieldDelegate{
         handleSend()
         return true
     }
+    
 }

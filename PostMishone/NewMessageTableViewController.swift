@@ -8,12 +8,14 @@
 
 import UIKit
 import Firebase
+import FirebaseStorage
 
 class User: NSObject{
     var name: String?
     var email: String?
     var password: String?
     var id: String?
+    var username: String?
 }
 
 class NewMessageTableViewController: UITableViewController {
@@ -29,13 +31,18 @@ class NewMessageTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.title = "New Message"
+        
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
         
         tableView.register(UserCell.self, forCellReuseIdentifier: cellID)
         
         fetchUser()
+        
+        
     }
     
+    //get user from database
     func fetchUser(){
         Database.database().reference().child("Users").observe(.childAdded, with: {(snapshot) in
             
@@ -46,10 +53,9 @@ class NewMessageTableViewController: UITableViewController {
                 print(user.id!)
                 
                 user.email = dictionary["email"] as? String
+                user.username = dictionary["username"] as? String
                 self.users.append(user)
-                print(self.users.count)
                 DispatchQueue.main.async(execute: {self.tableView.reloadData()})
-                   // self.tableView.reloadData()
             }
             
     } , withCancel: nil)
@@ -57,27 +63,40 @@ class NewMessageTableViewController: UITableViewController {
 
 }
 
+    // when cancel to create a new message
     @objc func handleCancel(){
         dismiss(animated: true, completion: nil)
     }
     
-
-
+    // set number of rows in the table view
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementati on, return the number of rows
+
         return users.count
     }
     
+    // data to show in each cell
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! UserCell
         
         let user = users[indexPath.row]
-        cell.textLabel?.text = user.email
+        let toId = user.id
+        
+        cell.profileImageView.loadImageUsingCacheWithU(toId: toId!)
+        cell.textLabel?.text = user.username
         cell.detailTextLabel?.text = user.email
         
-        return cell
+       return cell
+    
     }
     
+    // height for each row/cell
+  override  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 77
+    }
+    
+    
+    // when a row is being selected, first dismiss the new message view then direct to chatlog view
+    // user that being selected is sent to the chat table view
     var chattableController: ChatTableViewController?
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -86,17 +105,10 @@ class NewMessageTableViewController: UITableViewController {
             let user = self.users[indexPath.row]
             print(user)
             self.chattableController?.showChatControllerForUser(user: user)
+        
         }
     }
 }
 
 
-class UserCell: UITableViewCell{
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
+
