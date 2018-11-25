@@ -41,7 +41,7 @@ class ChatTableViewController: UITableViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem(rawValue: 7)!, target: self, action: #selector(handleNewMessage))
 
         tableView.register(UserCell.self, forCellReuseIdentifier: cellId)
-        
+        self.tabBarController?.tabBar.isHidden = false
         observeUserMessages()
     }
     
@@ -82,12 +82,21 @@ class ChatTableViewController: UITableViewController {
                             return m1time > m2time
                         })
                     }
-                    DispatchQueue.main.async(execute: {self.tableView.reloadData()})
+                    
+                    self.timer?.invalidate()
+                   self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.handleReloadTable), userInfo: nil, repeats: false)
+                    
                 }
 
             }), withCancel: nil)
             
         }, withCancel: nil)
+    }
+    
+    var timer: Timer?
+    
+    @objc func handleReloadTable(){
+        DispatchQueue.main.async(execute: {self.tableView.reloadData()})
     }
     
    // directing to chatlog view accoring to the person you want to talk to

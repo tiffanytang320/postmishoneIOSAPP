@@ -33,16 +33,109 @@ class ChatLogViewController: UICollectionViewController, UITextFieldDelegate, UI
     override func viewDidLoad(){
         super.viewDidLoad()
         
-        collectionView?.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 58, right: 0)
-        collectionView?.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0)
+        collectionView?.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
         collectionView?.alwaysBounceVertical = true
         collectionView?.backgroundColor = UIColor.white
         collectionView.register(ChatMessageCell.self, forCellWithReuseIdentifier: cellId)
         
-        setupInputComponents()
+        collectionView?.keyboardDismissMode = .interactive
+        
+       // setupInputComponents()
+      //  setupKeyboardObservers()
+
+        self.tabBarController?.tabBar.isHidden = true
     
         self.navigationItem.title = usera!.username
-
+    }
+    
+    lazy var inputContainerView: UIView = {
+        let containerView = UIView()
+        containerView.frame = CGRect(x:0, y:0, width: self.view.frame.width, height: 50)
+        containerView.backgroundColor = UIColor.white
+        
+        //initialize Send Button
+        let sendButton = UIButton(type: .system)
+        sendButton.setTitle("Send", for: .normal)
+        sendButton.translatesAutoresizingMaskIntoConstraints = false
+        sendButton.addTarget(self, action: #selector(handleSend), for: .touchUpInside)
+        containerView.addSubview(sendButton)
+        
+        // Place send button
+        sendButton.rightAnchor.constraint(equalTo: containerView.rightAnchor).isActive = true
+        sendButton.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
+        sendButton.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        sendButton.heightAnchor.constraint(equalTo: containerView.heightAnchor).isActive = true
+        
+        // Init "Enter message..."
+        containerView.addSubview(self.inputTextField)
+        
+        // Place "Enter message..."
+        self.inputTextField.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 8).isActive = true
+        self.inputTextField.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
+        self.inputTextField.rightAnchor.constraint(equalTo: sendButton.leftAnchor, constant: 8).isActive = true
+        self.inputTextField.heightAnchor.constraint(equalTo: containerView.heightAnchor).isActive = true
+        
+        let separatorLineView = UIView()
+        separatorLineView.backgroundColor = UIColor.darkGray
+        separatorLineView.translatesAutoresizingMaskIntoConstraints = false
+        containerView.addSubview(separatorLineView)
+        
+        separatorLineView.leftAnchor.constraint(equalTo: containerView.leftAnchor).isActive = true
+        separatorLineView.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
+        separatorLineView.widthAnchor.constraint(equalTo: containerView.widthAnchor).isActive = true
+        separatorLineView.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        
+        
+        return containerView
+        
+    }()
+    
+    override var inputAccessoryView: UIView? {
+        get {
+            return inputContainerView
+        }
+    }
+    
+    override var canBecomeFirstResponder: Bool {
+        return true
+    }
+    
+    func setupKeyboardObservers(){
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        NotificationCenter.default.removeObserver(self)
+        
+    }
+    
+    @objc func handleKeyboardWillHide(notification: NSNotification) {
+            let keyboardDuration = (notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue
+        
+            containerViewBottonAnchor?.constant = 0
+            UIView.animate(withDuration: keyboardDuration!) {
+                self.view.layoutIfNeeded()
+            }
+    }
+    
+    @objc func handleKeyboardWillShow(notification: NSNotification) {
+        
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardDuration = (notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue
+ 
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            
+            containerViewBottonAnchor?.constant = -keyboardHeight
+            UIView.animate(withDuration: keyboardDuration!) {
+                self.view.layoutIfNeeded()
+            }
+        }
     }
     
     func observeMessages(){
@@ -90,11 +183,38 @@ class ChatLogViewController: UICollectionViewController, UITextFieldDelegate, UI
         let message = messages[indexPath.item]
         cell.textView.text = message.text
         
+        setupCell(cell: cell, message: message)
+
         // modify the bubble view's width
-        
         cell.bubbleWidthAnchor?.constant = estimateFrameForText(text: message.text!).width + 32
         
         return cell
+    }
+    
+    private func setupCell(cell: ChatMessageCell, message: Message){
+        if let toId = message.toId {
+        cell.profileImageView.loadImageUsingCacheWithU(toId: toId)
+        }
+        
+        if message.fromId == Auth.auth().currentUser!.uid {
+            // outgoing blue
+            cell.bubbleView.backgroundColor = ChatMessageCell.blueColor
+            cell.textView.textColor = UIColor.white 
+            cell.profileImageView.isHidden = true
+            
+            cell.bubbleViewRightAnchor?.isActive = true
+            cell.bubbleViewLeftAnchor?.isActive = false
+   
+        } else {
+            //incoming gray
+            cell.bubbleView.backgroundColor = UIColor.lightGray
+            cell.textView.textColor = UIColor.black
+            cell.profileImageView.isHidden = false
+            
+            cell.bubbleViewRightAnchor?.isActive = false
+            cell.bubbleViewLeftAnchor?.isActive = true
+     
+        }
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -156,6 +276,8 @@ class ChatLogViewController: UICollectionViewController, UITextFieldDelegate, UI
         return true
     }
     
+    var containerViewBottonAnchor: NSLayoutConstraint?
+    
     func setupInputComponents(){
         let containerView = UIView()
         containerView.backgroundColor = UIColor.white
@@ -165,9 +287,12 @@ class ChatLogViewController: UICollectionViewController, UITextFieldDelegate, UI
         
         // Place the text field box at the bottom
         containerView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        // containerView.bottomAnchor.constraint(equalToConstant: 50).isActive = true
-        containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        
+        containerViewBottonAnchor = containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        containerViewBottonAnchor?.isActive = true
+        
         containerView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        
         containerView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
         //initialize Send Button
