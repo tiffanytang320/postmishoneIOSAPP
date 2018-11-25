@@ -13,11 +13,7 @@ class ChatLogViewController: UICollectionViewController, UITextFieldDelegate{
     
   var usera: User? {
        didSet{
-        print(usera!.username)
         self.navigationItem.title = usera?.username
-        print(navigationItem.title)
-        print("user changed")
-        print(usera!.id)
         }
     }
     
@@ -94,13 +90,35 @@ class ChatLogViewController: UICollectionViewController, UITextFieldDelegate{
     // send message to database
     @objc func handleSend(){
         let ref = Database.database().reference().child("Messages")
+       
         let childRef = ref.childByAutoId()
+        let messageId = childRef.key
+        
 
-        let toId = usera?.id ////////// TO SHOULD BE THE REAL TOID
+        let toId = usera?.id
         let fromId = Auth.auth().currentUser!.uid
-        let timeStamp = Int(NSDate.timeIntervalSinceReferenceDate*1000)
+        let timeStamp = NSDate().timeIntervalSince1970
         let values = ["text": inputTextField.text!, "toId": toId as Any, "fromId": fromId, "timeStamp": timeStamp]
-        childRef.updateChildValues(values)
+        
+        let userMessagesRef = Database.database().reference().child("user-messages").child(fromId)
+        let recipientUserMessagesRef = Database.database().reference().child("user-messages").child(toId!)
+        
+        let testing = [messageId: 1]
+        
+        //userMessagesRef.updateChildValues(testing)
+        
+       // childRef.updateChildValues(values)
+        
+        childRef.updateChildValues(values) { (error, ref) in
+            if error != nil{
+                print(error as Any)
+                return
+            }
+            print("update val")
+            
+            userMessagesRef.updateChildValues(testing as [AnyHashable : Any])
+            recipientUserMessagesRef.updateChildValues(testing as [AnyHashable : Any])
+        }
     }
     
     @objc func setReceiver(user: User){

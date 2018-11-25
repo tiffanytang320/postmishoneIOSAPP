@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PostMishone/ChatTableViewController.swift"
-            timestampString = "564801633.93654"
+            timestampString = "564822815.3468"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "87"
             endingLineNumber = "87"
-            landmarkName = "handleNewMessage()"
+            landmarkName = "observeUserMessages()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -126,8 +126,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "21"
             endingLineNumber = "21"
-            landmarkName = "usera"
-            landmarkType = "24">
+            landmarkName = "ChatLogViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -142,7 +142,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "22"
             endingLineNumber = "22"
-            landmarkName = "usera"
+            landmarkName = "inputTextField"
             landmarkType = "24">
             <Locations>
                <Location
@@ -266,7 +266,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "107"
             endingLineNumber = "107"
-            landmarkName = "setReceiver(user:)"
+            landmarkName = "handleSend()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

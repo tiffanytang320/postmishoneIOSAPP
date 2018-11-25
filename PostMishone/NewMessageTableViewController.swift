@@ -11,11 +11,10 @@ import Firebase
 import FirebaseStorage
 
 class User: NSObject{
-    var name: String?
-    var email: String?
-    var password: String?
-    var id: String?
     var username: String?
+    var email: String?
+    var id: String?
+
 }
 
 class NewMessageTableViewController: UITableViewController {
