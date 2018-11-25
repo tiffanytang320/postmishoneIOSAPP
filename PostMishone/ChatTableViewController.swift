@@ -41,8 +41,15 @@ class ChatTableViewController: UITableViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem(rawValue: 7)!, target: self, action: #selector(handleNewMessage))
 
         tableView.register(UserCell.self, forCellReuseIdentifier: cellId)
-        self.tabBarController?.tabBar.isHidden = false
+        
+       // self.tabBarController?.tabBar.isHidden = false
+        
         observeUserMessages()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     var messages = [Message]()
