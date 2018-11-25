@@ -19,9 +19,7 @@ class Message: NSObject{
     
     
     func chatPartnerId() -> String? {
-        
         return fromId == Auth.auth().currentUser!.uid ? toId : fromId
-    
     }
 }
 
@@ -36,17 +34,14 @@ class ChatTableViewController: UITableViewController {
 
         super.viewDidLoad()
         
-        
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         self.tabBarController?.tabBar.isHidden = false
-    
-        
+   
         // that icon on the top right
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem(rawValue: 7)!, target: self, action: #selector(handleNewMessage))
 
         tableView.register(UserCell.self, forCellReuseIdentifier: cellId)
         
-        // observeMessages()
         observeUserMessages()
     }
     
@@ -76,8 +71,8 @@ class ChatTableViewController: UITableViewController {
                     self.messages.append(message)
                     
                     
-                    if let toId = message.toId{
-                        self.messagesDictionary[message.toId!] = message
+                    if let chatPartnerId = message.chatPartnerId(){
+                        self.messagesDictionary[chatPartnerId] = message
                         
                         self.messages = Array(self.messagesDictionary.values)
                         self.messages.sort(by: { (message1, message2) -> Bool in
@@ -87,45 +82,10 @@ class ChatTableViewController: UITableViewController {
                             return m1time > m2time
                         })
                     }
-                    
                     DispatchQueue.main.async(execute: {self.tableView.reloadData()})
                 }
-                
-                
+
             }), withCancel: nil)
-            
-        }, withCancel: nil)
-    }
-    
-    // Show the list of messages on chat table view page
-    func observeMessages(){
-        let ref = Database.database().reference().child("Messages")
-        ref.observe(.childAdded, with: {(snapshot) in
-            
-            if let dictionary = snapshot.value as? [String: AnyObject]{
-                let message = Message()
-          
-                message.toId = dictionary["toId"] as? String
-                message.fromId = dictionary["fromId"] as? String
-                message.timeStamp = dictionary["timeStamp"] as? NSNumber
-                message.text = dictionary["text"] as? String
-                self.messages.append(message)
-                
-                
-                if let toId = message.toId{
-                    self.messagesDictionary[message.toId!] = message
-                    
-                    self.messages = Array(self.messagesDictionary.values)
-                    self.messages.sort(by: { (message1, message2) -> Bool in
-                        let m1time = message1.timeStamp!.intValue
-                        let m2time = message2.timeStamp!.intValue
-                        
-                        return m1time > m2time
-                    })
-                }
-                
-                DispatchQueue.main.async(execute: {self.tableView.reloadData()})
-            }        
             
         }, withCancel: nil)
     }
@@ -176,10 +136,25 @@ class ChatTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
       let message = messages[indexPath.row]
         
-        print(message.text, message.toId, message.fromId)
+        guard let chatPartnerId = message.chatPartnerId() else {
+            return
+        }
         
-       // showChatControllerForUser(user: User)
-
+        let ref = Database.database().reference().child("Users").child(chatPartnerId)
+        ref.observeSingleEvent(of: .value
+            , with: { (snapshot) in
+                guard let dictionary = snapshot.value as? [String: AnyObject]
+                    else {
+                        return
+                }
+                
+                let user = User()
+                user.email = dictionary["email"] as? String
+                user.username = dictionary["username"] as? String
+                user.id = chatPartnerId
+                self.showChatControllerForUser(user: user)
+                
+        }, withCancel: nil)
     }
     
     // height for each row/cell
