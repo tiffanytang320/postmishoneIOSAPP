@@ -61,8 +61,6 @@ class UserCell: UITableViewCell{
         let detailTextLabelRect = CGRect(origin: CGPoint(x: 75,y :detailTextLabel!.frame.origin.y + 2), size: CGSize(width: detailTextLabel!.frame.width, height: detailTextLabel!.frame.height ))
         
         detailTextLabel?.frame = detailTextLabelRect
-        
-        
     }
     
     let profileImageView: UIImageView = {
